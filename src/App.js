@@ -1,5 +1,7 @@
 import React from "react";
 import './App.css';
+import Header from './Header'
+import Techno from "./Techno";
 
 const App = () => {
   return (
@@ -9,25 +11,5 @@ const App = () => {
       </div>
   );
 }
-const Techno = () => {
-    return (
-        <div>
-            <ul>
-                <li>css</li>
-                <li>html</li>
-                <li>js</li>
-                <li>react</li>
-            </ul>
-        </div>
-    )
-}
-const Header = () => {
-    return (
-        <div>
-            <a href="http://google.com">Home </a>
-            <a href="http://google.com">News </a>
-            <a href="http://google.com">Messages</a>
-        </div>
-    );
-}
+
 export default App;
