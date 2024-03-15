@@ -18,6 +18,10 @@
 }
 .nav {
     grid-area: nav;
+    padding: 10px;
+    border-radius: 5px;
+    height: 500px;
+    background-color: #7FB93C;
 }
 .main {
     grid-area: main;
