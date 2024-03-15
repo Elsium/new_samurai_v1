@@ -1,8 +1,8 @@
 import React from "react";
-
+import style from './Profile.module.scss'
 const Profile = () => {
     return (
-        <main className='main'>
+        <main className={style.main}>
             <div>
                 banner
             </div>
@@ -14,7 +14,7 @@ const Profile = () => {
                 <div>
                     new posts
                 </div>
-                <div>
+                <div className={style.item}>
                     post 1
                 </div>
             </div>

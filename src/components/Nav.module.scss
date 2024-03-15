@@ -1,0 +1,25 @@
+.nav {
+  grid-area: nav;
+  padding: 10px;
+  border-radius: 5px;
+  height: 500px;
+  background-color: #7FB93C;
+}
+
+.item {
+  font-size: 20px;
+  padding: 5px 10px;
+
+  a {
+    color: black;
+    font-family: "Arimo", sans-serif;
+  }
+
+  a:hover {
+    font-weight: 500;
+  }
+}
+
+.item:last-child {
+  padding-top: 40px;
+}
