@@ -1,0 +1,36 @@
+.main {
+  margin-top: 20px;
+  background: rgba(0, 0, 0, 4%);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+
+  .newPost {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+
+    textarea {
+      height: 80px;
+      padding: 10px 5px;
+      border-radius: 10px;
+      resize: none;
+      overflow-y: hidden;
+    }
+
+    button {
+      margin-left: 20px;
+      border-radius: 10px;
+      width: 80px;
+      height: 40px;
+      background: red;
+    }
+  }
+}
+
+.posts {
+  width: 100%;
+  padding: 10px;
+}
