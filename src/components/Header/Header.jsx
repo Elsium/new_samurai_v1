@@ -11,7 +11,7 @@ const Header = () => {
                 </a>
             </div>
             <div>
-                asd
+                -
             </div>
         </header>
     );

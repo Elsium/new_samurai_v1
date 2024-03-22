@@ -3,8 +3,10 @@ import style from "./Actions.module.scss"
 
 const Actions = () => {
     return (
-        <section>
-
+        <section className={style.wrapper}>
+            <div>message</div>
+            <div>send money</div>
+            <div>subscribe</div>
         </section>
     );
 }
