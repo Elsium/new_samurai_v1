@@ -3,7 +3,9 @@
   padding: 10px;
   border-radius: 20px;
   height: 500px;
-  background: linear-gradient(90deg, rgba(127,185,60,80%), rgba(158,231,74,60%));
+  border: 1px solid rgba(43, 43, 43, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 .item {
@@ -15,7 +17,9 @@
   }
 
   a:hover {
+    transition: color 200ms;
     font-weight: 500;
+    color: rgb(223, 73, 255);
   }
 }
 
