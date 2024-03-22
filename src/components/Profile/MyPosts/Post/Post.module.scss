@@ -24,6 +24,12 @@
 }
 
 .content {
-  padding: 20px 60px 40px;
+  padding: 20px 60px 20px;
   font-size: 16px;
+}
+.footer {
+  padding-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }

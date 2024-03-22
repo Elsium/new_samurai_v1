@@ -13,8 +13,8 @@ const MyPosts = () => {
                 </button>
             </div>
             <div className={style.posts}>
-                <Post/>
-                <Post/>
+                <Post name="Diana Fox" message="Hello" like="96" commentsCount="10"/>
+                <Post name="Diana Fox" message="It is my first post here" like="115" commentsCount="15"/>
             </div>
         </section>
     );
