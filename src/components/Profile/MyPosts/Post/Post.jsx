@@ -1,5 +1,7 @@
 import React from "react";
 import style from "./Post.module.scss"
+import comment from "./img/comment.png"
+import like from "./img/like.png"
 
 const Post = (props) => {
     return(
@@ -13,10 +15,16 @@ const Post = (props) => {
             </p>
             <div className={style.footer}>
                 <div className={style.comments}>
-                    {props.commentsCount} comments
+                    <p>
+                        {props.commentsCount}
+                    </p>
+                    <img src={comment} alt=""/>
                 </div>
                 <div className={style.likes}>
-                    {props.like} likes
+                    <p>
+                        {props.like}
+                    </p>
+                    <img src={like} alt=""/>
                 </div>
             </div>
         </div>

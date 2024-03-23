@@ -12,8 +12,25 @@
   font-size: 20px;
   padding: 5px 10px;
 
+  &:not(:last-child) {
+    border-bottom: 1px solid rgb(225, 225, 225);
+  }
+
   a {
     color: black;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+
+    p {
+      margin-left: 20px;
+    }
   }
 
   a:hover {
@@ -21,8 +38,9 @@
     font-weight: 500;
     color: rgb(223, 73, 255);
   }
-}
 
-.item:last-child {
-  padding-top: 40px;
+  a.active {
+    font-weight: 500;
+    color: rgb(223, 73, 255);
+  }
 }

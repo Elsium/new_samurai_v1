@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./MyPosts.module.scss"
 import Post from "./Post/Post";
-import send from "./send.png"
+import send from "./img/send.png"
 
 const MyPosts = () => {
     return(

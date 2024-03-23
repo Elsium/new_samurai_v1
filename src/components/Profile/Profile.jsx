@@ -5,11 +5,11 @@ import Home from "./Home/Home";
 import Actions from "./Actions/Actions";
 const Profile = () => {
     return (
-        <main className={style.main}>
+        <section>
             <Home/>
             <Actions/>
             <MyPosts/>
-        </main>
+        </section>
     );
 }
 
