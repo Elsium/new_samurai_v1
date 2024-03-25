@@ -1,0 +1,67 @@
+.container {
+  display: grid;
+  grid-template-columns: 4fr 10fr;
+  grid-gap: 10px;
+
+  & > div {
+    //display: flex;
+    //flex-direction: column;
+    border-radius: 20px;
+    height: 700px;
+    border: 1px solid rgba(43, 43, 43, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+  }
+}
+
+.dialogsItems, .messagesItems {
+  height: 100%;
+  overflow: scroll;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(129, 129, 129, 50%);
+    border-radius: 20px;
+  }
+}
+
+.dialog {
+  font-size: 18px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  height: 50px;
+
+  &:hover {
+    transition: background 200ms;
+    background: rgb(230, 230, 230);
+  }
+}
+
+.messagesItems {
+  height: calc(100% - 60px);
+  border-radius: 0 0 20px 20px;
+}
+
+.message {
+  font-size: 16px;
+  padding: 10px;
+}
+
+.dialogUser, .find {
+  height: 60px;
+  padding: 0 20px;
+  border-radius: 20px 20px 0 0;
+  background: rgb(245, 245, 245);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -7,3 +7,4 @@
 5. **21.03.2024** - reached the 15th lesson
 6. **22.03.2024** - reached the 17.xth lesson
 7. **23.03.2024** - reached the 20th lesson
+8. **25.03.2024** - reached the 21th lesson
