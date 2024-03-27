@@ -7,11 +7,12 @@ import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
+
 const App = () => {
     return (
         <div className={style.appWrapper}>
-            <Header />
-            <Nav />
+            <Header/>
+            <Nav/>
             <main className={style.main}>
                 <Routes>
                     <Route path={`/profile`} element={<Profile/>}/>

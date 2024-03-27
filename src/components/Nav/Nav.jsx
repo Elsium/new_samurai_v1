@@ -9,19 +9,19 @@ const Nav = () => {
     return (
         <nav className={style.nav}>
             <div className={style.item}>
-                <NavLink to='/news' className={({ isActive }) => (isActive ? style.active : '')}>
+                <NavLink to='/news' className={({isActive}) => (isActive ? style.active : '')}>
                     <img src={news} alt=""/>
                     <p>News</p>
                 </NavLink>
             </div>
             <div className={style.item}>
-                <NavLink to='/dialog' className={({ isActive }) => (isActive ? style.active : '')}>
+                <NavLink to='/dialog' className={({isActive}) => (isActive ? style.active : '')}>
                     <img src={msg} alt=""/>
                     <p>Messages</p>
                 </NavLink>
             </div>
             <div className={style.item}>
-                <NavLink to='/music' className={({ isActive }) => (isActive ? style.active : '')}>
+                <NavLink to='/music' className={({isActive}) => (isActive ? style.active : '')}>
                     <img src={music} alt=""/>
                     <p>Music</p>
                 </NavLink>

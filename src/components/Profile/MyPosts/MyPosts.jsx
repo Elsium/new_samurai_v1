@@ -4,7 +4,7 @@ import Post from "./Post/Post";
 import send from "./img/send.png"
 
 const MyPosts = () => {
-    return(
+    return (
         <section className={style.main}>
             <div className={style.newPost}>
                 <textarea name="" id="" cols="100" rows="1"></textarea>
