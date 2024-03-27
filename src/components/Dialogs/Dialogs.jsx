@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./Dialogs.module.scss"
+import {NavLink} from "react-router-dom";
 
 const Dialogs = () => {
     return (
@@ -9,69 +10,15 @@ const Dialogs = () => {
                     find dialog
                 </div>
                 <div className={style.dialogsItems}>
-                    <div className={style.dialog}>
-                        Ivan Dog
-                    </div>
-                    <div className={style.dialog}>
-                        Lisa Cat
-                    </div>
-                    <div className={style.dialog}>
-                        Marina El
-                    </div>
-                    <div className={style.dialog}>
-                        Ivan Dog
-                    </div>
-                    <div className={style.dialog}>
-                        Lisa Cat
-                    </div>
-                    <div className={style.dialog}>
-                        Marina El
-                    </div>
-                    <div className={style.dialog}>
-                        Ivan Dog
-                    </div>
-                    <div className={style.dialog}>
-                        Lisa Cat
-                    </div>
-                    <div className={style.dialog}>
-                        Marina El
-                    </div>
-                    <div className={style.dialog}>
-                        Ivan Dog
-                    </div>
-                    <div className={style.dialog}>
-                        Lisa Cat
-                    </div>
-                    <div className={style.dialog}>
-                        Marina El
-                    </div>
-                    <div className={style.dialog}>
-                        Ivan Dog
-                    </div>
-                    <div className={style.dialog}>
-                        Lisa Cat
-                    </div>
-                    <div className={style.dialog}>
-                        Marina El
-                    </div>
-                    <div className={style.dialog}>
-                        Ivan Dog
-                    </div>
-                    <div className={style.dialog}>
-                        Lisa Cat
-                    </div>
-                    <div className={style.dialog}>
-                        Marina El
-                    </div>
-                    <div className={style.dialog}>
-                        Ivan Dog
-                    </div>
-                    <div className={style.dialog}>
-                        Lisa Cat
-                    </div>
-                    <div className={style.dialog}>
-                        Marina El
-                    </div>
+                    <NavLink to='/dialog/1'>
+                        <div className={style.dialog}>Ivan Dog</div>
+                    </NavLink>
+                    <NavLink to='/dialog/2'>
+                        <div className={style.dialog}>Lisa Cat</div>
+                    </NavLink>
+                    <NavLink to='/dialog/3'>
+                        <div className={style.dialog}>Marina El</div>
+                    </NavLink>
                 </div>
             </div>
             <div>
@@ -80,113 +27,25 @@ const Dialogs = () => {
                     <p>additional</p>
                 </div>
                 <div className={style.messagesItems}>
-                    <div className={style.message}>
-                        Hi
+                    <div className={style.message + ' ' + style.to}>
+                        Why?
+                        <div className={style.messageTime}>12:32</div>
                     </div>
-                    <div className={style.message}>
-                        Hi
-                    </div>
-                    <div className={style.message}>
-                        Ok
-                    </div>
-                    <div className={style.message}>
+                    <div className={style.message + ' ' + style.from}>
                         Bye
+                        <div className={style.messageTime}>12:14</div>
                     </div>
-                    <div className={style.message}>
-                        Hi
-                    </div>
-                    <div className={style.message}>
-                        Hi
-                    </div>
-                    <div className={style.message}>
+                    <div className={style.message + ' ' + style.from}>
                         Ok
+                        <div className={style.messageTime}>12:14</div>
                     </div>
-                    <div className={style.message}>
-                        Bye
-                    </div>
-                    <div className={style.message}>
+                    <div className={style.message + ' ' + style.to}>
                         Hi
+                        <div className={style.messageTime}>12:14</div>
                     </div>
-                    <div className={style.message}>
+                    <div className={style.message + ' ' + style.from}>
                         Hi
-                    </div>
-                    <div className={style.message}>
-                        Ok
-                    </div>
-                    <div className={style.message}>
-                        Bye
-                    </div>
-                    <div className={style.message}>
-                        Hi
-                    </div>
-                    <div className={style.message}>
-                        Hi
-                    </div>
-                    <div className={style.message}>
-                        Ok
-                    </div>
-                    <div className={style.message}>
-                        Bye
-                    </div>
-                    <div className={style.message}>
-                        Hi
-                    </div>
-                    <div className={style.message}>
-                        Hi
-                    </div>
-                    <div className={style.message}>
-                        Ok
-                    </div>
-                    <div className={style.message}>
-                        Bye
-                    </div>
-                    <div className={style.message}>
-                        Hi
-                    </div>
-                    <div className={style.message}>
-                        Hi
-                    </div>
-                    <div className={style.message}>
-                        Ok
-                    </div>
-                    <div className={style.message}>
-                        Bye
-                    </div>
-                    <div className={style.message}>
-                        Hi
-                    </div>
-                    <div className={style.message}>
-                        Hi
-                    </div>
-                    <div className={style.message}>
-                        Ok
-                    </div>
-                    <div className={style.message}>
-                        Bye
-                    </div>
-                    <div className={style.message}>
-                        Hi
-                    </div>
-                    <div className={style.message}>
-                        Hi
-                    </div>
-                    <div className={style.message}>
-                        Ok
-                    </div>
-                    <div className={style.message}>
-                        Bye
-                    </div>
-                    <div className={style.message}>
-                        Hi
-                    </div>
-                    <div className={style.message}>
-                        Hi
-                    </div>
-                    <div className={style.message}>
-                        Ok
-                    </div>
-                    <div className={style.message}>
-                        Bye
+                        <div className={style.messageTime}>12:12</div>
                     </div>
                 </div>
             </div>

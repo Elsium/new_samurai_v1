@@ -15,7 +15,7 @@ const Nav = () => {
                 </NavLink>
             </div>
             <div className={style.item}>
-                <NavLink to='/message' className={({ isActive }) => (isActive ? style.active : '')}>
+                <NavLink to='/dialog' className={({ isActive }) => (isActive ? style.active : '')}>
                     <img src={msg} alt=""/>
                     <p>Messages</p>
                 </NavLink>
