@@ -3,27 +3,11 @@ import style from "./Dialogs.module.scss"
 import Message from "./Message/Message";
 import Dialog from "./Dialog/Dialog";
 
-let dialogsData = [
-    {userID: 1, name: 'Ivan Dog'},
-    {userID: 2, name: 'Lisa Cat'},
-    {userID: 3, name: 'Marina El'}
-]
-
-let msgData = [
-    {userID: 4, msgID: 7, text: 'i`m so sorry (((', time: '12:33', from: 0},
-    {userID: 1, msgID: 6, text: 'because you were ignore me...', time: '12:33', from: 1},
-    {userID: 4, msgID: 5, text: 'Why?', time: '12:32', from: 0},
-    {userID: 1, msgID: 4, text: 'Bye', time: '12:14', from: 1},
-    {userID: 1, msgID: 3, text: 'Ok', time: '12:14', from: 1},
-    {userID: 4, msgID: 2, text: 'Hi', time: '12:14', from: 0},
-    {userID: 1, msgID: 1, text: 'Hi', time: '12:12', from: 1},
-]
-
 const Dialogs = (props) => {
-    let dialogs = dialogsData
+    let dialogs = props.dialogsData
         .map ( item => <Dialog name={item.name} userID={item.userID}/> )
 
-    let msg = msgData
+    let msg = props.msgData
             .map( item => <Message msgID={item.msgID} userID={item.userID} from={item.from} text={item.text} time={item.time}/> )
 
     return (
