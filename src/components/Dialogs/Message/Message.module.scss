@@ -1,0 +1,24 @@
+.message {
+  margin: 5px;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  max-width: 70%;
+
+  .messageTime {
+    font-size: 0.75em;
+    text-align: right;
+    margin-top: 2px;
+    margin-left: 10px;
+  }
+}
+
+.from {
+  align-self: flex-start;
+  background: rgb(209, 177, 255);
+}
+
+.to {
+  align-self: flex-end;
+  background: rgb(245, 245, 245);
+}

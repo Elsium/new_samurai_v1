@@ -1,45 +1,25 @@
 import React from "react";
 import style from "./Dialogs.module.scss"
-import {NavLink} from "react-router-dom";
+import Message from "./Message/Message";
+import Dialog from "./Dialog/Dialog";
 
-const Dialog = (props) => {
-    return (
-        <NavLink to={'/dialog/' + props.userID}>
-            <div className={style.dialog}>{props.name}</div>
-        </NavLink>
-    );
-}
+let dialogsData = [
+    {userID: 1, name: 'Ivan Dog'},
+    {userID: 2, name: 'Lisa Cat'},
+    {userID: 3, name: 'Marina El'}
+]
 
-const Message = (props) => {
-
-    let msgType = (props.from === 0) ? (style.message + ' ' + style.to) : (style.message + ' ' + style.from);
-
-    return (
-        <div className={msgType}>
-            {props.text}
-            <div className={style.messageTime}>{props.time}</div>
-        </div>
-    );
-}
+let msgData = [
+    {userID: 4, msgID: 7, text: 'i`m so sorry (((', time: '12:33', from: 0},
+    {userID: 1, msgID: 6, text: 'because you were ignore me...', time: '12:33', from: 1},
+    {userID: 4, msgID: 5, text: 'Why?', time: '12:32', from: 0},
+    {userID: 1, msgID: 4, text: 'Bye', time: '12:14', from: 1},
+    {userID: 1, msgID: 3, text: 'Ok', time: '12:14', from: 1},
+    {userID: 4, msgID: 2, text: 'Hi', time: '12:14', from: 0},
+    {userID: 1, msgID: 1, text: 'Hi', time: '12:12', from: 1},
+]
 
 const Dialogs = (props) => {
-
-    let dialogsData = [
-        {userID: 1, name: 'Ivan Dog'},
-        {userID: 2, name: 'Lisa Cat'},
-        {userID: 3, name: 'Marina El'}
-    ]
-
-    let msgData = [
-        {userID: 4, msgID: 7, text: 'i`m so sorry (((', time: '12:33', from: 0},
-        {userID: 1, msgID: 6, text: 'because you were ignore me...', time: '12:33', from: 1},
-        {userID: 4, msgID: 5, text: 'Why?', time: '12:32', from: 0},
-        {userID: 1, msgID: 4, text: 'Bye', time: '12:14', from: 1},
-        {userID: 1, msgID: 3, text: 'Ok', time: '12:14', from: 1},
-        {userID: 4, msgID: 2, text: 'Hi', time: '12:14', from: 0},
-        {userID: 1, msgID: 1, text: 'Hi', time: '12:12', from: 1},
-    ]
-
     let dialogs = dialogsData
         .map ( item => <Dialog name={item.name} userID={item.userID}/> )
 

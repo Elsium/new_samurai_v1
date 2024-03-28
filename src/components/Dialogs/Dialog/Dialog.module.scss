@@ -1,0 +1,12 @@
+.dialog {
+  font-size: 18px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  height: 50px;
+
+  &:hover {
+    transition: background 200ms;
+    background: rgb(230, 230, 230);
+  }
+}
