@@ -10,10 +10,12 @@ const Post = (props) => {
                 <img
                     src="https://yt3.googleusercontent.com/4ATipS780rafUGrk-eQxUhRVyAXcBNIONO1Pyta-0P7I0BPM89Rk1T4W1eB7PAzXS2Ms8m3cy0U=s900-c-k-c0x00ffffff-no-rj"
                     alt=""/>
-                <p>{props.name}</p>
+                <p className={style.author}>{props.name}</p>
+                <p>·</p>
+                <p className={style.time}>{props.date} {props.time}</p>
             </div>
             <p className={style.content}>
-                {props.message}
+                {props.text}
             </p>
             <div className={style.footer}>
                 <div className={style.comments}>
@@ -24,7 +26,7 @@ const Post = (props) => {
                 </div>
                 <div className={style.likes}>
                     <p>
-                        {props.like}
+                        {props.likesCount}
                     </p>
                     <img src={like} alt=""/>
                 </div>
