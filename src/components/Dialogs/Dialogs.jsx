@@ -31,13 +31,20 @@ const Dialogs = (props) => {
     ]
 
     let msgData = [
-        {msgID: 6, text: 'bc u were ignore me...', time: '12:33', from: 1},
-        {msgID: 5, text: 'Why?', time: '12:32', from: 0},
-        {msgID: 4, text: 'Bye', time: '12:14', from: 1},
-        {msgID: 3, text: 'Ok', time: '12:14', from: 1},
-        {msgID: 2, text: 'Hi', time: '12:14', from: 0},
-        {msgID: 1, text: 'Hi', time: '12:12', from: 1},
+        {userID: 4, msgID: 7, text: 'i`m so sorry (((', time: '12:33', from: 0},
+        {userID: 1, msgID: 6, text: 'because you were ignore me...', time: '12:33', from: 1},
+        {userID: 4, msgID: 5, text: 'Why?', time: '12:32', from: 0},
+        {userID: 1, msgID: 4, text: 'Bye', time: '12:14', from: 1},
+        {userID: 1, msgID: 3, text: 'Ok', time: '12:14', from: 1},
+        {userID: 4, msgID: 2, text: 'Hi', time: '12:14', from: 0},
+        {userID: 1, msgID: 1, text: 'Hi', time: '12:12', from: 1},
     ]
+
+    let dialogs = dialogsData
+        .map ( item => <Dialog name={item.name} userID={item.userID}/> )
+
+    let msg = msgData
+            .map( item => <Message msgID={item.msgID} userID={item.userID} from={item.from} text={item.text} time={item.time}/> )
 
     return (
         <section className={style.container}>
@@ -46,9 +53,7 @@ const Dialogs = (props) => {
                     find dialog
                 </div>
                 <div className={style.dialogsItems}>
-                    <Dialog name={dialogsData[0].name} userID={dialogsData[0].userID}/>
-                    <Dialog name={dialogsData[1].name} userID={dialogsData[1].userID}/>
-                    <Dialog name={dialogsData[2].name} userID={dialogsData[2].userID}/>
+                    {dialogs}
                 </div>
             </div>
             <div>
@@ -61,12 +66,7 @@ const Dialogs = (props) => {
                     </div>
                 </div>
                 <div className={style.messagesItems}>
-                    <Message from={msgData[0].from} text={msgData[0].text} time={msgData[0].time}/>
-                    <Message from={msgData[1].from} text={msgData[1].text} time={msgData[1].time}/>
-                    <Message from={msgData[2].from} text={msgData[2].text} time={msgData[2].time}/>
-                    <Message from={msgData[3].from} text={msgData[3].text} time={msgData[3].time}/>
-                    <Message from={msgData[4].from} text={msgData[4].text} time={msgData[4].time}/>
-                    <Message from={msgData[5].from} text={msgData[5].text} time={msgData[5].time}/>
+                    {msg}
                 </div>
             </div>
         </section>

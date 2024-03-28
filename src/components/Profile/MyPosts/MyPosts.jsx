@@ -10,6 +10,8 @@ const MyPosts = () => {
         {postID: 2, name: 'Diana Fox', text: 'It is my first post here', date: '20.03.2024', time: '19:23', likesCount: 115, commentsCount: 15}
     ]
 
+    let posts = postsData.map( item => <Post name={item.name} text={item.text} likesCount={item.likesCount} commentsCount={item.commentsCount} time={item.time} date={item.date}/>)
+
     return (
         <section className={style.main}>
             <div className={style.newPost}>
@@ -19,8 +21,7 @@ const MyPosts = () => {
                 </button>
             </div>
             <div className={style.posts}>
-                <Post name={postsData[0].name} text={postsData[0].text} likesCount={postsData[0].likesCount} commentsCount={postsData[0].commentsCount} time={postsData[0].time} date={postsData[0].date}/>
-                <Post name={postsData[1].name} text={postsData[1].text} likesCount={postsData[1].likesCount} commentsCount={postsData[1].commentsCount} time={postsData[1].time} date={postsData[1].date}/>
+                {posts}
             </div>
         </section>
     );
