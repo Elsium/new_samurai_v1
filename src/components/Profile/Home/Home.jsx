@@ -13,7 +13,7 @@ const Home = () => {
                     Diana Fox
                 </div>
                 <div className={style.sub}>
-                    124 subscribers
+                    2.5M subscribers
                 </div>
             </div>
         </section>

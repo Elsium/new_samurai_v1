@@ -2,6 +2,7 @@ import React from "react";
 import style from "./Dialogs.module.scss"
 import Message from "./Message/Message";
 import Dialog from "./Dialog/Dialog";
+import SendMsg from "./SendMsg/SendMsg";
 
 const Dialogs = (props) => {
     let dialogs = props.dialogsData
@@ -32,6 +33,7 @@ const Dialogs = (props) => {
                 <div className={style.messagesItems}>
                     {msg}
                 </div>
+                <SendMsg/>
             </div>
         </section>
     );

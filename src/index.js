@@ -11,6 +11,7 @@ let dialogsData = [
 ]
 
 let msgData = [
+    {userID: 1, msgID: 6, text: 'ok', time: '12:34', from: 1},
     {userID: 4, msgID: 7, text: 'i`m so sorry (((', time: '12:33', from: 0},
     {userID: 1, msgID: 6, text: 'because you were ignore me...', time: '12:33', from: 1},
     {userID: 4, msgID: 5, text: 'Why?', time: '12:32', from: 0},
