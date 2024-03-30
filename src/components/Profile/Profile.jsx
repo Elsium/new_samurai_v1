@@ -9,7 +9,7 @@ const Profile = (props) => {
         <section>
             <Home/>
             <Actions/>
-            <MyPosts profileData={props.profileData}/>
+            <MyPosts profileData={props.profileData} addPost={props.addPost}/>
         </section>
     );
 }

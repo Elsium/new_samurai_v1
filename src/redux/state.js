@@ -1,8 +1,24 @@
 let state = {
     profileData: {
         posts: [
-            {postID: 1, name: 'Diana Fox', text: 'Hello', date: '23.03.2024', time: '15:32', likesCount: 96, commentsCount: 10},
-            {postID: 2, name: 'Diana Fox', text: 'It is my first post here', date: '20.03.2024', time: '19:23', likesCount: 115, commentsCount: 15}
+            {
+                postID: 1,
+                name: 'Diana Fox',
+                text: 'Hello',
+                date: '23.03.2024',
+                time: '15:32',
+                likesCount: 96,
+                commentsCount: 10
+            },
+            {
+                postID: 2,
+                name: 'Diana Fox',
+                text: 'It is my first post here',
+                date: '20.03.2024',
+                time: '19:23',
+                likesCount: 115,
+                commentsCount: 15
+            }
         ]
     },
     dialogsData: {
@@ -22,6 +38,25 @@ let state = {
             {userID: 3, name: 'Marina El'}
         ]
     }
+}
+
+export let addPost = (postMessage) => {
+    debugger
+
+    const time = new Date();
+    let tempDate = ("0" + time.getDate()).slice(-2) + "." + ("0" + (time.getMonth() + 1)).slice(-2) + "." + time.getFullYear();
+    let tempTime = ("0" + time.getHours()).slice(-2) + ":" + ("0" + time.getMinutes()).slice(-2);
+
+    let newPost = {
+        userID: state.profileData.posts.length + 1,
+        name: 'Diana Fox',
+        text: postMessage,
+        date: tempDate,
+        time: tempTime,
+        likesCount: 0,
+        commentsCount: 0
+    }
+    state.profileData.posts.push(newPost);
 }
 
 export default state;
