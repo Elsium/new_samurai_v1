@@ -1,8 +1,11 @@
+import {renderEntireTree} from "../render";
+
+
 let state = {
     profileData: {
         posts: [
             {
-                postID: 1,
+                postID: 2,
                 name: 'Diana Fox',
                 text: 'Hello',
                 date: '23.03.2024',
@@ -11,7 +14,7 @@ let state = {
                 commentsCount: 10
             },
             {
-                postID: 2,
+                postID: 1,
                 name: 'Diana Fox',
                 text: 'It is my first post here',
                 date: '20.03.2024',
@@ -41,14 +44,12 @@ let state = {
 }
 
 export let addPost = (postMessage) => {
-    debugger
-
     const time = new Date();
     let tempDate = ("0" + time.getDate()).slice(-2) + "." + ("0" + (time.getMonth() + 1)).slice(-2) + "." + time.getFullYear();
     let tempTime = ("0" + time.getHours()).slice(-2) + ":" + ("0" + time.getMinutes()).slice(-2);
 
     let newPost = {
-        userID: state.profileData.posts.length + 1,
+        postID: state.profileData.posts.length + 1,
         name: 'Diana Fox',
         text: postMessage,
         date: tempDate,
@@ -56,7 +57,9 @@ export let addPost = (postMessage) => {
         likesCount: 0,
         commentsCount: 0
     }
-    state.profileData.posts.push(newPost);
+    state.profileData.posts = [newPost, ...state.profileData.posts];
+    console.log(state.profileData.posts);
+    renderEntireTree(state);
 }
 
 export default state;
