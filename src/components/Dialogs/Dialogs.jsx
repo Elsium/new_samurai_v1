@@ -5,11 +5,16 @@ import Dialog from "./Dialog/Dialog";
 import SendMsg from "./SendMsg/SendMsg";
 
 const Dialogs = (props) => {
-    let dialogs = props.dialogsData
-        .map ( item => <Dialog name={item.name} userID={item.userID}/> )
+    let dialogs = props.dialogsData.dialogs
+        .map(item => <Dialog name={item.name}
+                             userID={item.userID}/>)
 
-    let msg = props.msgData
-            .map( item => <Message msgID={item.msgID} userID={item.userID} from={item.from} text={item.text} time={item.time}/> )
+    let msg = props.dialogsData.msg
+        .map(item => <Message msgID={item.msgID}
+                              userID={item.userID}
+                              from={item.from}
+                              text={item.text}
+                              time={item.time}/>)
 
     return (
         <section className={style.container}>

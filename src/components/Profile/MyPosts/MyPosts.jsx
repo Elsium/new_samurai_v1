@@ -4,7 +4,13 @@ import Post from "./Post/Post";
 import send from "./img/send.png"
 
 const MyPosts = (props) => {
-    let posts = props.postsData.map( item => <Post name={item.name} text={item.text} likesCount={item.likesCount} commentsCount={item.commentsCount} time={item.time} date={item.date}/>)
+    let posts = props.profileData.posts
+        .map(item => <Post name={item.name}
+                           text={item.text}
+                           likesCount={item.likesCount}
+                           commentsCount={item.commentsCount}
+                           time={item.time}
+                           date={item.date}/>)
 
     return (
         <section className={style.main}>
