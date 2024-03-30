@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./MyPosts.module.scss"
-import Post from "./Post/Post";
 import send from "./img/send.png"
+import Post from "./Post/Post";
 
 const MyPosts = (props) => {
     let postElement = React.createRef();
@@ -28,9 +28,9 @@ const MyPosts = (props) => {
         <section className={style.main}>
             <div className={style.newPost}>
                 <textarea ref={postElement}
-                          placeholder="Write a post..."
                           value={props.profileData.currentPostText}
-                          onChange={onPostChange}>
+                          onChange={onPostChange}
+                          placeholder="Write a post...">
                 </textarea>
                 <div className={style.button} onClick={addPost}>
                     <img src={send} alt="send"/>

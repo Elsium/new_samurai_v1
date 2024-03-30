@@ -24,10 +24,10 @@ const SendMsg = (props) => {
     return (
         <div className={style.container}>
             <div>
-                <textarea onChange={updateMsg}
-                          onKeyDown={sendMsgEnter}
+                <textarea ref={msgElement}
                           value={props.currentMsg}
-                          ref={msgElement}
+                          onChange={updateMsg}
+                          onKeyDown={sendMsgEnter}
                           placeholder="Type your message...">
                 </textarea>
                 <div onClick={sendMsg}>

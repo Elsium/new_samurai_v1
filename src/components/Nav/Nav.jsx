@@ -1,9 +1,9 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
 import style from './Nav.module.scss'
 import news from './img/news.png'
 import msg from './img/msg.png'
 import music from './img/music.png'
-import {NavLink} from "react-router-dom";
 
 const Nav = () => {
     return (

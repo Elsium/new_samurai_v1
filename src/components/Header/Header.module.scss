@@ -1,11 +1,10 @@
 .header {
   grid-area: header;
-  border-bottom: 1px solid rgba(0, 0, 0, 5%);
-  border-radius: 20px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 5%);
 }
 
 .logo {
@@ -17,9 +16,9 @@
 
 .profile {
   a {
-    color: black;
     display: flex;
     align-items: center;
+    color: black;
   }
 
   a p {
@@ -28,8 +27,8 @@
   }
 
   a img {
+    border-radius: 50%;
     width: 45px;
     height: 45px;
-    border-radius: 50%;
   }
 }

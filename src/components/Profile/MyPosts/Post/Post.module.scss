@@ -1,9 +1,9 @@
 .item {
-  padding-top: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  flex-direction: column;
+  padding-top: 20px;
 }
 
 .header {
@@ -11,9 +11,9 @@
   align-items: center;
 
   img {
+    border-radius: 50%;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
   }
 
   p {
@@ -21,9 +21,9 @@
   }
 
   .author {
-    margin-left: 20px;
     font-size: 20px;
     font-weight: 500;
+    margin-left: 20px;
   }
 
   .time {
@@ -32,16 +32,16 @@
 }
 
 .content {
-  padding: 20px 60px 20px;
   font-size: 16px;
   white-space: pre-wrap;
+  padding: 20px 60px 20px;
 }
 
 .footer {
-  padding-bottom: 20px;
-  width: 100%;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 20px;
+  width: 100%;
 }
 
 .comments, .likes {
@@ -49,9 +49,9 @@
   align-items: center;
 
   img {
+    margin-left: 10px;
     width: 20px;
     height: 20px;
-    margin-left: 10px;
   }
 
   p {

@@ -1,25 +1,25 @@
 .main {
-  margin-top: 20px;
-  background: rgb(245, 245, 245);
-  border-radius: 20px;
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
   padding: 50px 50px 10px;
+  border-radius: 20px;
+  background: rgb(245, 245, 245);
 
   .newPost {
     align-self: center;
     display: flex;
     align-items: center;
-    width: 100%;
     padding: 10px;
+    width: 100%;
 
     textarea {
-      height: 50px;
-      width: 60%;
-      padding: 10px 5px;
-      border-radius: 10px;
       resize: none;
       overflow-y: hidden;
+      padding: 10px 5px;
+      border-radius: 10px;
+      height: 50px;
+      width: 60%;
     }
 
     .button {
@@ -39,8 +39,8 @@
 }
 
 .posts {
-  width: 100%;
   padding: 10px;
+  width: 100%;
 
   & > div:not(:last-child) {
     border-bottom: 1px solid rgb(225, 225, 225);

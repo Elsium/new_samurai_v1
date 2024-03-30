@@ -1,10 +1,10 @@
 .message {
-  margin: 5px;
   font-size: 14px;
+  white-space: pre-wrap;
+  margin: 5px;
   padding: 5px 10px;
   border-radius: 15px;
   max-width: 70%;
-  white-space: pre-wrap;
 
   .messageTime {
     font-size: 0.75em;
