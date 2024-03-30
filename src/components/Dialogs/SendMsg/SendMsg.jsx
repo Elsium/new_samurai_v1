@@ -6,15 +6,30 @@ const SendMsg = (props) => {
 
     let msgElement = React.createRef();
 
-    let sendMsg = () => {
+    let updateMsg = () => {
         let text = msgElement.current.value;
-        alert(text)
+        props.updateMsg(text);
+    }
+    let sendMsg = () => {
+        props.sendMsg();
+    }
+
+    let sendMsgEnter = (event) => {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            sendMsg();
+        }
     }
 
     return (
         <div className={style.container}>
             <div>
-                <textarea ref={msgElement} placeholder="Type your message..."></textarea>
+                <textarea onChange={updateMsg}
+                          onKeyDown={sendMsgEnter}
+                          value={props.currentMsg}
+                          ref={msgElement}
+                          placeholder="Type your message...">
+                </textarea>
                 <div onClick={sendMsg}>
                     <img src={send} alt=""/>
                 </div>

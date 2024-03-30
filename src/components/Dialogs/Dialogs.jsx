@@ -6,11 +6,13 @@ import SendMsg from "./SendMsg/SendMsg";
 
 const Dialogs = (props) => {
     let dialogs = props.dialogsData.dialogs
-        .map(item => <Dialog name={item.name}
+        .map(item => <Dialog key={item.userID}
+                             name={item.name}
                              userID={item.userID}/>)
 
     let msg = props.dialogsData.msg
-        .map(item => <Message msgID={item.msgID}
+        .map(item => <Message key={item.msgID}
+                              msgID={item.msgID}
                               userID={item.userID}
                               from={item.from}
                               text={item.text}
@@ -38,7 +40,9 @@ const Dialogs = (props) => {
                 <div className={style.messagesItems}>
                     {msg}
                 </div>
-                <SendMsg/>
+                <SendMsg sendMsg={props.sendMsg}
+                         updateMsg={props.updateMsg}
+                         currentMsg={props.dialogsData.currentMsgText}/>
             </div>
         </section>
     );
