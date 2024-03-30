@@ -12,13 +12,22 @@ const MyPosts = (props) => {
                            time={item.time}
                            date={item.date}/>)
 
+    let postElement = React.createRef();
+
+    let addPost = () => {
+        let text = postElement.current.value;
+        alert(text)
+    }
+
     return (
         <section className={style.main}>
             <div className={style.newPost}>
-                <textarea name="" id="" cols="100" rows="1"></textarea>
-                <button>
+                <textarea ref={postElement}
+                          placeholder="Write a post...">
+                </textarea>
+                <div className={style.button} onClick={addPost}>
                     <img src={send} alt="send"/>
-                </button>
+                </div>
             </div>
             <div className={style.posts}>
                 {posts}
