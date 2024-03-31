@@ -1,7 +1,5 @@
-const ADD_POST = 'ADDPOST'
-const UPDATE_POST = 'UPDATEPOST'
-const SEND_MSG = 'SENDMSG'
-const UPDATE_MSG = 'UPDATE_MSG'
+import dialogsReducer from "./dialogsReducer";
+import postsReducer from "./postsReducer";
 
 let store = {
     _state: {
@@ -50,52 +48,6 @@ let store = {
     _callSubscriber() {
         console.log('not connected');
     },
-    _addPost() {
-        if (this._state.profileData.currentPostText === "") return
-
-        const time = new Date();
-        let tempDate = ("0" + time.getDate()).slice(-2) + "." + ("0" + (time.getMonth() + 1)).slice(-2) + "." + time.getFullYear();
-        let tempTime = ("0" + time.getHours()).slice(-2) + ":" + ("0" + time.getMinutes()).slice(-2);
-
-        let newPost = {
-            postID: this._state.profileData.posts.length + 1,
-            name: 'Diana Fox',
-            text: this._state.profileData.currentPostText,
-            date: tempDate,
-            time: tempTime,
-            likesCount: 0,
-            commentsCount: 0
-        }
-        this._state.profileData.posts = [newPost, ...this._state.profileData.posts];
-        this._state.profileData.currentPostText = "";
-        this._callSubscriber(this._state);
-    },
-    _updatePost(newText) {
-        this._state.profileData.currentPostText = newText;
-        this._callSubscriber(this._state);
-    },
-    _sendMsg() {
-        if (this._state.dialogsData.currentMsgText === "") return
-
-        const time = new Date();
-        let tempTime = ("0" + time.getHours()).slice(-2) + ":" + ("0" + time.getMinutes()).slice(-2);
-
-        let newMsg = {
-            userID: 4,
-            msgID: this._state.dialogsData.msg.length + 1,
-            text: this._state.dialogsData.currentMsgText,
-            time: tempTime,
-            from: 0
-        };
-
-        this._state.dialogsData.msg = [newMsg, ...this._state.dialogsData.msg];
-        this._state.dialogsData.currentMsgText = "";
-        this._callSubscriber(this._state);
-    },
-    _updateMsg(newText) {
-        this._state.dialogsData.currentMsgText = newText;
-        this._callSubscriber(this._state);
-    },
 
     getState() {
         return this._state;
@@ -103,33 +55,11 @@ let store = {
     subscribe(observer) {
         this._callSubscriber = observer;
     },
-
     dispatch(action) {
-        switch (action.type) {
-            case ADD_POST:
-                this._addPost();
-                break;
-            case UPDATE_POST:
-                this._updatePost(action.text)
-                break;
-            case SEND_MSG:
-                this._sendMsg();
-                break;
-            case UPDATE_MSG:
-                this._updateMsg(action.text);
-                break;
-            default:
-                console.error('wrong action');
-        }
+        dialogsReducer(this._state.dialogsData, action);
+        postsReducer(this._state.profileData, action);
+        this._callSubscriber(this._state);
     },
 }
-
-export const addPostActionCreator = () => ({type: ADD_POST})
-
-export const updatePostActionCreator = (text) => ({type: UPDATE_POST, text: text})
-
-export const sendMsgActionCreator = () => ({type: SEND_MSG})
-
-export const updateMsgActionCreator = (text) => ({type: UPDATE_MSG, text: text})
 
 export default store;

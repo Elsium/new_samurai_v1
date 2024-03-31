@@ -1,14 +1,13 @@
 import React from "react";
 import style from "./SendMsg.module.scss"
 import send from "./img/send.png"
-import {sendMsgActionCreator, updateMsgActionCreator, updatePostActionCreator} from "../../../redux/store";
+import {sendMsgActionCreator, updateMsgActionCreator} from "../../../redux/dialogsReducer";
 
 const SendMsg = (props) => {
 
     let msgElement = React.createRef();
 
     let updateMsg = () => {
-        debugger
         let text = msgElement.current.value;
         props.dispatch(updateMsgActionCreator(text));
     }
