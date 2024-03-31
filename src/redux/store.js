@@ -42,13 +42,10 @@ let store = {
             currentMsgText: "",
         }
     },
-    getState() {
-        return this._state;
-    },
     _callSubscriber() {
         console.log('not connected');
     },
-    addPost() {
+    _addPost() {
         if (this._state.profileData.currentPostText === "") return
 
         const time = new Date();
@@ -68,11 +65,11 @@ let store = {
         this._state.profileData.currentPostText = "";
         this._callSubscriber(this._state);
     },
-    updatePost(newText) {
+    _updatePost(newText) {
         this._state.profileData.currentPostText = newText;
         this._callSubscriber(this._state);
     },
-    sendMsg() {
+    _sendMsg() {
         if (this._state.dialogsData.currentMsgText === "") return
 
         const time = new Date();
@@ -90,12 +87,35 @@ let store = {
         this._state.dialogsData.currentMsgText = "";
         this._callSubscriber(this._state);
     },
-    updateMsg(newText) {
+    _updateMsg(newText) {
         this._state.dialogsData.currentMsgText = newText;
         this._callSubscriber(this._state);
     },
+
+    getState() {
+        return this._state;
+    },
     subscribe(observer) {
         this._callSubscriber = observer;
+    },
+
+    dispatch(action) {
+        switch (action.type) {
+            case 'ADDPOST':
+                this._addPost();
+                break;
+            case 'UPDATEPOST':
+                this._updatePost(action.text)
+                break;
+            case 'SENDMSG':
+                this._sendMsg();
+                break;
+            case 'UPDATEMSG':
+                this._updateMsg(action.text);
+                break;
+            default:
+                console.error('wrong action');
+        }
     },
 }
 

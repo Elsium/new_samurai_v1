@@ -16,12 +16,12 @@ const MyPosts = (props) => {
                            date={item.date}/>)
 
     let addPost = () => {
-        props.addPost();
+        props.dispatch({type: 'ADDPOST'});
     }
 
     let onPostChange = () => {
         let text = postElement.current.value;
-        props.updatePost(text);
+        props.dispatch({type: 'UPDATEPOST', text: text});
     }
 
     return (

@@ -40,9 +40,8 @@ const Dialogs = (props) => {
                 <div className={style.messagesItems}>
                     {msg}
                 </div>
-                <SendMsg sendMsg={props.sendMsg}
-                         updateMsg={props.updateMsg}
-                         currentMsg={props.dialogsData.currentMsgText}/>
+                <SendMsg currentMsg={props.dialogsData.currentMsgText}
+                         dispatch={props.dispatch}/>
             </div>
         </section>
     );

@@ -7,11 +7,12 @@ const SendMsg = (props) => {
     let msgElement = React.createRef();
 
     let updateMsg = () => {
+        debugger
         let text = msgElement.current.value;
-        props.updateMsg(text);
+        props.dispatch({type: 'UPDATEMSG', text: text});
     }
     let sendMsg = () => {
-        props.sendMsg();
+        props.dispatch({type: 'SENDMSG'});
     }
 
     let sendMsgEnter = (event) => {
