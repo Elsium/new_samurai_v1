@@ -4,6 +4,10 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+  //TODO refactor body scrollbar
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 }
 
 .appWrapper {
