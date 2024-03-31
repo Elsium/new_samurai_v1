@@ -1,10 +1,34 @@
 const ADD_POST = 'ADDPOST'
 const UPDATE_POST = 'UPDATEPOST'
 
-const postsReducer = (state, action) => {
+let initialState = {
+    posts: [
+        {
+            postID: 2,
+            name: 'Diana Fox',
+            text: 'Hello',
+            date: '23.03.2024',
+            time: '15:32',
+            likesCount: 96,
+            commentsCount: 10
+        },
+        {
+            postID: 1,
+            name: 'Diana Fox',
+            text: 'It is my first post here',
+            date: '20.03.2024',
+            time: '19:23',
+            likesCount: 115,
+            commentsCount: 15
+        }
+    ],
+    currentPostText: "",
+}
+
+const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
-            if (state.currentPostText === "") return
+            if (state.currentPostText === "") return state
 
             const time = new Date();
             let tempDate = ("0" + time.getDate()).slice(-2) + "." + ("0" + (time.getMonth() + 1)).slice(-2) + "." + time.getFullYear();
@@ -33,4 +57,4 @@ const postsReducer = (state, action) => {
 export const addPostActionCreator = () => ({type: ADD_POST})
 export const updatePostActionCreator = (text) => ({type: UPDATE_POST, text: text})
 
-export default postsReducer;
+export default profileReducer;

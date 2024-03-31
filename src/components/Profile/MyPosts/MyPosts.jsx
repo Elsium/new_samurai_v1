@@ -2,7 +2,7 @@ import React from "react";
 import style from "./MyPosts.module.scss"
 import send from "./img/send.png"
 import Post from "./Post/Post";
-import {addPostActionCreator, updatePostActionCreator} from "../../../redux/postsReducer";
+import {addPostActionCreator, updatePostActionCreator} from "../../../redux/profileReducer";
 
 const MyPosts = (props) => {
     let postElement = React.createRef();

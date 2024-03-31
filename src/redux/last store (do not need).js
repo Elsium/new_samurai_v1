@@ -1,7 +1,7 @@
 import dialogsReducer from "./dialogsReducer";
-import postsReducer from "./postsReducer";
+import profileReducer from "./profileReducer";
 
-let store = {
+let lastStoreDoNotNeed = {
     _state: {
         profileData: {
             posts: [
@@ -56,10 +56,10 @@ let store = {
         this._callSubscriber = observer;
     },
     dispatch(action) {
-        dialogsReducer(this._state.dialogsData, action);
-        postsReducer(this._state.profileData, action);
+        this._state.dialogsData = dialogsReducer(this._state.dialogsData, action);
+        this._state.profileData = profileReducer(this._state.profileData, action);
         this._callSubscriber(this._state);
     },
 }
 
-export default store;
+export default lastStoreDoNotNeed;
