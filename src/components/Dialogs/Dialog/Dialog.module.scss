@@ -9,4 +9,8 @@
     transition: background 200ms;
     background: rgb(230, 230, 230);
   }
+
+  &:focus {
+    text-decoration: underline;
+  }
 }
