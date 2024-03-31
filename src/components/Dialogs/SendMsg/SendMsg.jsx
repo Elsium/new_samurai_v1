@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./SendMsg.module.scss"
 import send from "./img/send.png"
+import {sendMsgActionCreator, updateMsgActionCreator, updatePostActionCreator} from "../../../redux/store";
 
 const SendMsg = (props) => {
 
@@ -9,10 +10,10 @@ const SendMsg = (props) => {
     let updateMsg = () => {
         debugger
         let text = msgElement.current.value;
-        props.dispatch({type: 'UPDATEMSG', text: text});
+        props.dispatch(updateMsgActionCreator(text));
     }
     let sendMsg = () => {
-        props.dispatch({type: 'SENDMSG'});
+        props.dispatch(sendMsgActionCreator());
     }
 
     let sendMsgEnter = (event) => {

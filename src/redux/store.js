@@ -1,3 +1,8 @@
+const ADD_POST = 'ADDPOST'
+const UPDATE_POST = 'UPDATEPOST'
+const SEND_MSG = 'SENDMSG'
+const UPDATE_MSG = 'UPDATE_MSG'
+
 let store = {
     _state: {
         profileData: {
@@ -101,16 +106,16 @@ let store = {
 
     dispatch(action) {
         switch (action.type) {
-            case 'ADDPOST':
+            case ADD_POST:
                 this._addPost();
                 break;
-            case 'UPDATEPOST':
+            case UPDATE_POST:
                 this._updatePost(action.text)
                 break;
-            case 'SENDMSG':
+            case SEND_MSG:
                 this._sendMsg();
                 break;
-            case 'UPDATEMSG':
+            case UPDATE_MSG:
                 this._updateMsg(action.text);
                 break;
             default:
@@ -118,5 +123,13 @@ let store = {
         }
     },
 }
+
+export const addPostActionCreator = () => ({type: ADD_POST})
+
+export const updatePostActionCreator = (text) => ({type: UPDATE_POST, text: text})
+
+export const sendMsgActionCreator = () => ({type: SEND_MSG})
+
+export const updateMsgActionCreator = (text) => ({type: UPDATE_MSG, text: text})
 
 export default store;

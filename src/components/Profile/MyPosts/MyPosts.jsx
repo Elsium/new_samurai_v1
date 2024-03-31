@@ -2,6 +2,7 @@ import React from "react";
 import style from "./MyPosts.module.scss"
 import send from "./img/send.png"
 import Post from "./Post/Post";
+import {addPostActionCreator, updatePostActionCreator} from "../../../redux/store";
 
 const MyPosts = (props) => {
     let postElement = React.createRef();
@@ -16,12 +17,12 @@ const MyPosts = (props) => {
                            date={item.date}/>)
 
     let addPost = () => {
-        props.dispatch({type: 'ADDPOST'});
+        props.dispatch(addPostActionCreator());
     }
 
     let onPostChange = () => {
         let text = postElement.current.value;
-        props.dispatch({type: 'UPDATEPOST', text: text});
+        props.dispatch(updatePostActionCreator(text));
     }
 
     return (
@@ -32,9 +33,9 @@ const MyPosts = (props) => {
                           onChange={onPostChange}
                           placeholder="Write a post...">
                 </textarea>
-                <div className={style.button} onClick={addPost}>
+                <button className={style.button} onClick={addPost}>
                     <img src={send} alt="send"/>
-                </div>
+                </button>
             </div>
             <div className={style.posts}>
                 {posts}
