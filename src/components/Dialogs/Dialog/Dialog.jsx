@@ -4,7 +4,8 @@ import {NavLink} from "react-router-dom";
 
 const Dialog = (props) => {
     return (
-        <NavLink to={'/dialog/' + props.userID} className={style.dialog}>
+        <NavLink to={'/dialog/' + props.userID} className={({isActive}) =>
+            (isActive ? style.dialog + ' ' + style.active : style.dialog)}>
             <div>{props.name}</div>
         </NavLink>
     );
