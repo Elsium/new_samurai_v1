@@ -1,4 +1,6 @@
-import {renderEntireTree} from "../render";
+let renderEntireTree = () => {
+    console.log('not connected');
+}
 
 let state = {
     profileData: {
@@ -44,7 +46,7 @@ let state = {
     }
 }
 
-export let addPost = () => {
+export const addPost = () => {
     if (state.profileData.currentPostText === "") return
 
     const time = new Date();
@@ -65,12 +67,12 @@ export let addPost = () => {
     renderEntireTree(state);
 }
 
-export let updatePost = (newText) => {
+export const updatePost = (newText) => {
     state.profileData.currentPostText = newText;
     renderEntireTree(state);
 }
 
-export let sendMsg = () => {
+export const sendMsg = () => {
     if (state.dialogsData.currentMsgText === "") return
 
     const time = new Date();
@@ -89,8 +91,12 @@ export let sendMsg = () => {
     renderEntireTree(state);
 }
 
-export let updateMsg = (newText) => {
+export const updateMsg = (newText) => {
     state.dialogsData.currentMsgText = newText;
     renderEntireTree(state);
+}
+
+export const subscribe = (observer) => {
+    renderEntireTree = observer;
 }
 export default state;
