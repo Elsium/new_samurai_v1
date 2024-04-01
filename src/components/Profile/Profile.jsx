@@ -4,12 +4,12 @@ import Actions from "./Actions/Actions";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
-const Profile = (props) => {
+const Profile = () => {
     return (
         <section>
             <Home/>
             <Actions/>
-            <MyPostsContainer store={props.store}/>
+            <MyPostsContainer/>
         </section>
     );
 }
