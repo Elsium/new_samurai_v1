@@ -6,8 +6,8 @@ const mapStateToProps = (state) => ({
         profileData: state.profileData
 })
 const mapDispatchToProps = (dispatch) => ({
-        postChange: () => dispatch(addPostActionCreator()),
-        addPost: (text) => dispatch(updatePostActionCreator(text))
+        postChange: (text) => dispatch(updatePostActionCreator(text)),
+        addPost: () => dispatch(addPostActionCreator())
 })
 
 const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);

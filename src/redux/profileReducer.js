@@ -1,5 +1,5 @@
-const ADD_POST = 'ADDPOST'
-const UPDATE_POST = 'UPDATEPOST'
+const ADD_POST = 'ADD_POST'
+const UPDATE_POST = 'UPDATE_POST'
 
 let initialState = {
     posts: [
@@ -43,12 +43,15 @@ const profileReducer = (state = initialState, action) => {
                 likesCount: 0,
                 commentsCount: 0
             }
-            state.posts = [newPost, ...state.posts];
-            state.currentPostText = "";
-            return state;
+
+            let tempAddState = {...state};
+            tempAddState.posts = [newPost, ...state.posts];
+            tempAddState.currentPostText = "";
+            return tempAddState;
         case UPDATE_POST:
-            state.currentPostText = action.text;
-            return state;
+            let tempUpdateState = {...state};
+            tempUpdateState.currentPostText = action.text;
+            return tempUpdateState;
         default:
             return state;
     }

@@ -7,18 +7,12 @@ import './index.scss';
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-export let renderEntireTree = () => {
-    root.render(
-        <React.StrictMode>
-            <BrowserRouter>
-                <Provider store={store}>
-                    <App/>
-                </Provider>
-            </BrowserRouter>
-        </React.StrictMode>
-    );
-}
-renderEntireTree();
-
-store.subscribe(() => {renderEntireTree()});
+root.render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <Provider store={store}>
+                <App/>
+            </Provider>
+        </BrowserRouter>
+    </React.StrictMode>
+);

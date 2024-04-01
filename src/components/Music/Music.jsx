@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./Music.module.scss"
+// import style from "./Music.module.scss"
 
 const Music = () => {
     return (

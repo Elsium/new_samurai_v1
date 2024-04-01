@@ -1,4 +1,4 @@
-const SEND_MSG = 'SENDMSG'
+const SEND_MSG = 'SEND_MSG'
 const UPDATE_MSG = 'UPDATE_MSG'
 
 let initialState = {
@@ -35,13 +35,15 @@ const dialogsReducer = (state = initialState, action) => {
                 time: tempTime,
                 from: 0
             };
-
-            state.msg = [newMsg, ...state.msg];
-            state.currentMsgText = "";
-            return state;
+            
+            let tempSendState = {...state};
+            tempSendState.msg = [newMsg, ...state.msg];
+            tempSendState.currentMsgText = "";
+            return tempSendState;
         case UPDATE_MSG:
-            state.currentMsgText = action.text;
-            return state;
+            let tempUpdateState = {...state};
+            tempUpdateState.currentMsgText = action.text;
+            return tempUpdateState;
         default:
             return state;
     }
