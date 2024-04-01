@@ -15,8 +15,8 @@ let initialState = {
         {
             postID: 1,
             name: 'Diana Fox',
-            text: 'It is my first post here',
-            date: '20.03.2024',
+            text: 'Now i start to learn ReactJS & Redux',
+            date: '13.03.2024',
             time: '19:23',
             likesCount: 115,
             commentsCount: 15

@@ -1,7 +1,7 @@
 import React from "react";
-import MyPosts from "./MyPosts/MyPosts";
 import Home from "./Home/Home";
 import Actions from "./Actions/Actions";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
 const Profile = (props) => {
@@ -9,7 +9,7 @@ const Profile = (props) => {
         <section>
             <Home/>
             <Actions/>
-            <MyPosts profileData={props.profileData} dispatch={props.dispatch}/>
+            <MyPostsContainer store={props.store}/>
         </section>
     );
 }

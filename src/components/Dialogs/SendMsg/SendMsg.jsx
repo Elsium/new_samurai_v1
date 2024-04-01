@@ -1,24 +1,17 @@
 import React from "react";
 import style from "./SendMsg.module.scss"
 import send from "./img/send.png"
-import {sendMsgActionCreator, updateMsgActionCreator} from "../../../redux/dialogsReducer";
 
 const SendMsg = (props) => {
-
     let msgElement = React.createRef();
 
-    let updateMsg = () => {
-        let text = msgElement.current.value;
-        props.dispatch(updateMsgActionCreator(text));
-    }
-    let sendMsg = () => {
-        props.dispatch(sendMsgActionCreator());
-    }
+    let onUpdateMsg = () => props.updateMsg(msgElement.current.value)
+    let onSendMsg = () => props.sendMsg()
 
     let sendMsgEnter = (event) => {
         if (event.key === 'Enter' && !event.shiftKey) {
             event.preventDefault();
-            sendMsg();
+            onSendMsg();
         }
     }
 
@@ -26,12 +19,12 @@ const SendMsg = (props) => {
         <div className={style.container}>
             <div>
                 <textarea ref={msgElement}
-                          value={props.currentMsg}
-                          onChange={updateMsg}
+                          value={props.currentMsgText}
+                          onChange={onUpdateMsg}
                           onKeyDown={sendMsgEnter}
                           placeholder="Type your message...">
                 </textarea>
-                <div onClick={sendMsg}>
+                <div onClick={onSendMsg}>
                     <img src={send} alt=""/>
                 </div>
             </div>

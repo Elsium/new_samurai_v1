@@ -2,7 +2,6 @@ import React from "react";
 import style from "./MyPosts.module.scss"
 import send from "./img/send.png"
 import Post from "./Post/Post";
-import {addPostActionCreator, updatePostActionCreator} from "../../../redux/profileReducer";
 
 const MyPosts = (props) => {
     let postElement = React.createRef();
@@ -16,14 +15,8 @@ const MyPosts = (props) => {
                            time={item.time}
                            date={item.date}/>)
 
-    let addPost = () => {
-        props.dispatch(addPostActionCreator());
-    }
-
-    let onPostChange = () => {
-        let text = postElement.current.value;
-        props.dispatch(updatePostActionCreator(text));
-    }
+    let onAddPost = () => props.addPost()
+    let onPostChange = () => props.postChange(postElement.current.value)
 
     return (
         <section className={style.main}>
@@ -33,7 +26,7 @@ const MyPosts = (props) => {
                           onChange={onPostChange}
                           placeholder="Write a post...">
                 </textarea>
-                <button className={style.button} onClick={addPost}>
+                <button className={style.button} onClick={onAddPost}>
                     <img src={send} alt="send"/>
                 </button>
             </div>

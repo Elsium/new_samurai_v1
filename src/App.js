@@ -4,7 +4,7 @@ import style from './App.module.scss';
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 
@@ -16,11 +16,9 @@ const App = (props) => {
             <main className={style.main}>
                 <Routes>
                     <Route path={`/profile`} element={<Profile
-                        profileData={props.state.profileData}
-                        dispatch={props.dispatch}/>}/>
-                    <Route path={`/dialog/*`} element={<Dialogs
-                        dialogsData={props.state.dialogsData}
-                        dispatch={props.dispatch}/>}/>
+                        store={props.store}/>}/>
+                    <Route path={`/dialog/*`} element={<DialogsContainer
+                        store={props.store}/>}/>
                     <Route path={`/news`} element={<News/>}/>
                     <Route path={`/music`} element={<Music/>}/>
                 </Routes>

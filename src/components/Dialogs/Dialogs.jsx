@@ -5,12 +5,12 @@ import Dialog from "./Dialog/Dialog";
 import SendMsg from "./SendMsg/SendMsg";
 
 const Dialogs = (props) => {
-    let dialogs = props.dialogsData.dialogs
+    let dialogs = props.state.dialogsData.dialogs
         .map(item => <Dialog key={item.userID}
                              name={item.name}
                              userID={item.userID}/>)
 
-    let msg = props.dialogsData.msg
+    let msg = props.state.dialogsData.msg
         .map(item => <Message key={item.msgID}
                               msgID={item.msgID}
                               userID={item.userID}
@@ -40,8 +40,9 @@ const Dialogs = (props) => {
                 <div className={style.messagesItems}>
                     {msg}
                 </div>
-                <SendMsg currentMsg={props.dialogsData.currentMsgText}
-                         dispatch={props.dispatch}/>
+                <SendMsg sendMsg={props.sendMsg}
+                         updateMsg={props.updateMsg}
+                         currentMsgText={props.state.dialogsData.currentMsgText}/>
             </div>
         </section>
     );
