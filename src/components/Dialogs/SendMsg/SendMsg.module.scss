@@ -11,10 +11,11 @@
 
     textarea {
       resize: none;
-      overflow-y: hidden;
       padding: 10px 5px;
+      margin-bottom: 10px;
       width: 80%;
       height: 40px;
+      max-height: 150px;
       border-radius: 10px;
       background: rgb(245, 245, 245);
     }
@@ -32,6 +33,7 @@
         width: 100%;
         height: 100%;
         transform: rotate(90deg);
+        user-select: none;
       }
     }
   }

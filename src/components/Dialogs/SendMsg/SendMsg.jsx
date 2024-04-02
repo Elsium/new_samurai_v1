@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useRef} from "react";
 import style from "./SendMsg.module.scss"
 import send from "./img/send.png"
 
 const SendMsg = (props) => {
-    let msgElement = React.createRef();
+    let msgElement = useRef(null);
 
     let onUpdateMsg = () => props.updateMsg(msgElement.current.value)
     let onSendMsg = () => props.sendMsg()

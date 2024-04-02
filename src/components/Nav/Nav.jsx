@@ -4,6 +4,7 @@ import style from './Nav.module.scss'
 import news from './img/news.png'
 import msg from './img/msg.png'
 import music from './img/music.png'
+import users from './img/users.png'
 
 const Nav = () => {
     return (
@@ -24,6 +25,12 @@ const Nav = () => {
                 <NavLink to='/music' className={({isActive}) => (isActive ? style.active : '')}>
                     <img src={music} alt=""/>
                     <p>Music</p>
+                </NavLink>
+            </div>
+            <div className={style.item}>
+                <NavLink to='/users' className={({isActive}) => (isActive ? style.active : '')}>
+                    <img src={users} alt=""/>
+                    <p>Users</p>
                 </NavLink>
             </div>
         </nav>

@@ -1,4 +1,4 @@
-const ADD_POST = 'ADD_POST'
+const CREATE_POST = 'CREATE_POST'
 const UPDATE_POST = 'UPDATE_POST'
 
 let initialState = {
@@ -27,7 +27,7 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST:
+        case CREATE_POST:
             if (state.currentPostText === "") return state
 
             const time = new Date();
@@ -59,7 +59,7 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST})
+export const CreatePostActionCreator = () => ({type: CREATE_POST})
 export const updatePostActionCreator = (text) => ({type: UPDATE_POST, text: text})
 
 export default profileReducer;

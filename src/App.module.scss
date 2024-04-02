@@ -4,10 +4,20 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  //TODO refactor body scrollbar
+
+  //box-sizing: border-box;
   &::-webkit-scrollbar {
     width: 0;
   }
+  //
+  //&::-webkit-scrollbar-track {
+  //  background: transparent;
+  //}
+  //
+  //&::-webkit-scrollbar-thumb {
+  //  background: rgba(129, 129, 129, 50%);
+  //  border-radius: 20px;
+  //}
 }
 
 .appWrapper {

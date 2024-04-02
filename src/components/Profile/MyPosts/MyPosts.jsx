@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useRef, useEffect} from "react";
 import style from "./MyPosts.module.scss"
-import send from "./img/send.png"
+import create from "./img/create.png"
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
-    let postElement = React.createRef();
+    let postElement = useRef(null);
 
     let posts = props.profileData.posts
         .map(item => <Post key={item.postID}
@@ -15,7 +15,14 @@ const MyPosts = (props) => {
                            time={item.time}
                            date={item.date}/>)
 
-    let onAddPost = () => props.addPost()
+    useEffect(() => {
+        if(postElement.current) {
+            postElement.current.style.height = '40px';
+            postElement.current.style.height = `${postElement.current.scrollHeight}px`
+        }
+    });
+
+    let onCreatePost = () => props.CreatePost()
     let onPostChange = () => props.postChange(postElement.current.value)
 
     return (
@@ -26,8 +33,8 @@ const MyPosts = (props) => {
                           onChange={onPostChange}
                           placeholder="Write a post...">
                 </textarea>
-                <button className={style.button} onClick={onAddPost}>
-                    <img src={send} alt="send"/>
+                <button className={style.button} onClick={onCreatePost}>
+                    <img src={create} alt="send"/>
                 </button>
             </div>
             <div className={style.posts}>
