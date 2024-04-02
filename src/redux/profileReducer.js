@@ -44,14 +44,16 @@ const profileReducer = (state = initialState, action) => {
                 commentsCount: 0
             }
 
-            let tempAddState = {...state};
-            tempAddState.posts = [newPost, ...state.posts];
-            tempAddState.currentPostText = "";
-            return tempAddState;
+            return {
+                ...state,
+                posts: [newPost, ...state.posts],
+                currentPostText: ""
+            };
         case UPDATE_POST:
-            let tempUpdateState = {...state};
-            tempUpdateState.currentPostText = action.text;
-            return tempUpdateState;
+            return {
+                ...state,
+                currentPostText: action.text
+            };
         default:
             return state;
     }

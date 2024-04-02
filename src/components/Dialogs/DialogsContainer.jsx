@@ -3,7 +3,7 @@ import {sendMsgActionCreator, updateMsgActionCreator} from "../../redux/dialogsR
 import Dialogs from "./Dialogs";
 
 const mapStateToProps = (state) => ({
-        state: state
+        dialogsData: state.dialogsData
 })
 
 const mapDispatchToProps = (dispatch) => ({
