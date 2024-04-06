@@ -1,0 +1,94 @@
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 30px;
+}
+
+.user {
+  padding: 40px 20px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(43, 43, 43, 0.3);
+}
+
+.first {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 30%;
+
+  .avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .name {
+    margin-top: 5px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .status {
+    margin-top: 5px;
+    font-size: 12px;
+    span {
+      font-style: italic;
+    }
+  }
+}
+
+.second {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5px;
+  width: 30%;
+
+  & + div + div {
+    text-align: right;
+  }
+
+  .location {
+    font-size: 18px;
+  }
+
+  .subscribers {
+    font-size: 16px;
+    margin-top: 10px;
+    span {
+      font-style: italic;
+    }
+  }
+}
+
+.subBtn {
+  button {
+    width: 100px;
+    height: 30px;
+    border: 1px solid rgba(43, 43, 43, 0.3);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 10px rgba(223, 73, 255,0.3);
+    }
+
+    &:active {
+      background: rgba(223, 73, 255,0.3);
+    }
+
+    &:focus {
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 10px rgba(223, 73, 255,0.3);
+    }
+  }
+}

@@ -3,19 +3,19 @@ const UPDATE_MSG = 'UPDATE_MSG'
 
 let initialState = {
     msg: [
-        {userID: 1, msgID: 8, text: 'ok', time: '12:34', from: 1},
-        {userID: 4, msgID: 7, text: 'i`m so sorry (((', time: '12:33', from: 0},
-        {userID: 1, msgID: 6, text: 'because you were ignore me...', time: '12:33', from: 1},
-        {userID: 4, msgID: 5, text: 'Why?', time: '12:32', from: 0},
-        {userID: 1, msgID: 4, text: 'Bye', time: '12:14', from: 1},
-        {userID: 1, msgID: 3, text: 'Ok', time: '12:14', from: 1},
-        {userID: 4, msgID: 2, text: 'Hi', time: '12:14', from: 0},
-        {userID: 1, msgID: 1, text: 'Hi', time: '12:12', from: 1},
+        {userID: 2, msgID: 8, text: 'ok', time: '12:34', from: 1},
+        {userID: 1, msgID: 7, text: 'i`m so sorry (((', time: '12:33', from: 0},
+        {userID: 2, msgID: 6, text: 'because you were ignore me...', time: '12:33', from: 1},
+        {userID: 1, msgID: 5, text: 'Why?', time: '12:32', from: 0},
+        {userID: 2, msgID: 4, text: 'Bye', time: '12:14', from: 1},
+        {userID: 2, msgID: 3, text: 'Ok', time: '12:14', from: 1},
+        {userID: 1, msgID: 2, text: 'Hi', time: '12:14', from: 0},
+        {userID: 2, msgID: 1, text: 'Hi', time: '12:12', from: 1},
     ],
     dialogs: [
-        {userID: 1, name: 'Ivan Dog'},
-        {userID: 2, name: 'Lisa Cat'},
-        {userID: 3, name: 'Marina El'}
+        {userID: 2, name: 'Ivan Dog'},
+        {userID: 3, name: 'Lisa Cat'},
+        {userID: 4, name: 'Marina El'}
     ],
     currentMsgText: "",
 }
