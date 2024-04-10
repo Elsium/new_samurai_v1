@@ -97,19 +97,15 @@
   }
 }
 
-.getUsers {
-  font-size: 16px;
-  width: 200px;
-  height: 50px;
-  align-self: center;
-  border-radius: 20px;
-  background: rgba(223, 73, 255,0.3);
+.pageNumbers {
 
-  &:hover {
-    background: rgba(223, 73, 255);
-  }
+  button {
+    display: inline-block;
+    background: none;
+    margin: 2px;
 
-  &:focus {
-    text-decoration: underline;
+    &.activePage {
+      font-weight: bold;
+    }
   }
 }
