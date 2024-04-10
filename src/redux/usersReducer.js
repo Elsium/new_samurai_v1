@@ -1,5 +1,5 @@
-const SUBSCRIBE = 'SUBSCRIBE'
-const UNSUBSCRIBE = 'UNSUBSCRIBE'
+const FOLLOW = 'FOLLOW'
+const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
 
 let initialState = {
@@ -7,34 +7,33 @@ let initialState = {
 }
 
 const usersReducer = (state = initialState, action) => {
+    debugger
     switch(action.type) {
-        case SUBSCRIBE:
+        case FOLLOW:
             return {
                 ...state,
                 users: state.users.map(u=> {
-                    if (u.userID === action.userID) return {...u, subscribed: true};
+                    if (u.id === action.id) return {...u, followed: true};
                     return u;
                 } )
             };
-        case UNSUBSCRIBE:
+        case UNFOLLOW:
             return {
                 ...state,
                 users: state.users.map(u=> {
-                    if (u.userID === action.userID) return {...u, subscribed: false};
+                    if (u.id === action.id) return {...u, followed: false};
                     return u;
                 } )
             };
         case SET_USERS:
-            //TODO refactor here
-            if (state.users.length === action.users.length) return state;
-            return {...state, users: [...state.users, ...action.users]}
+            return {...state, users: [...action.users]}
         default:
             return state;
     }
 }
 
-export const subscribeAC = (userID) => ({type: SUBSCRIBE, userID: userID})
-export const unsubscribeAC = (userID) => ({type: UNSUBSCRIBE, userID: userID})
+export const followAC = (id) => ({type: FOLLOW, id: id})
+export const unfollowAC = (id) => ({type: UNFOLLOW, id: id})
 export const setUsersAC = (users) => ({type: SET_USERS, users: users})
 
 export default usersReducer;
