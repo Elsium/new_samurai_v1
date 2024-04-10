@@ -98,14 +98,5 @@
 }
 
 .pageNumbers {
-
-  button {
-    display: inline-block;
-    background: none;
-    margin: 2px;
-
-    &.activePage {
-      font-weight: bold;
-    }
-  }
+  margin: 10px auto 20px;
 }

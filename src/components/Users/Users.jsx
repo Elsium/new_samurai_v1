@@ -2,6 +2,7 @@ import React from "react";
 import style from "./Users.module.scss"
 import axios from "axios";
 import user from "./img/user.jpg"
+import {Pagination} from "@mui/material";
 
 class Users extends React.Component {
     componentDidMount() {
@@ -29,14 +30,19 @@ class Users extends React.Component {
 
         return (
             <section className={style.container}>
-                <div className={style.pageNumbers}>
-                    {
-                        pages.map(i => <button key={i}
-                                               className={this.props.currentPage === i ? style.activePage: ""}
-                                               onClick={() => {this.onChangePage(i)}}>{i}
-                        </button>)
-                    }
-                </div>
+                {/*<div className={style.pageNumbers}>*/}
+                {/*    {*/}
+                {/*        pages.map(i => <button key={i}*/}
+                {/*                               className={this.props.currentPage === i ? style.activePage: ""}*/}
+                {/*                               onClick={() => {this.onChangePage(i)}}>{i}*/}
+                {/*        </button>)*/}
+                {/*    }*/}
+                {/*</div>*/}
+                <Pagination className={style.pageNumbers}
+                            count={pageCount}
+                            showFirstButton showLastButton
+                            page={this.props.currentPage}
+                            onChange={(e, page) => {this.onChangePage(page)}}/>
                 <div className={style.users}>
                     {this.props.users.map(u => <div className={style.user} key={u.id}>
                         <div className={style.first}>
