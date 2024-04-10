@@ -1,5 +1,9 @@
 .container {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.users {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -90,5 +94,22 @@
       background: rgba(255, 255, 255, 0.4);
       box-shadow: 0 0 10px rgba(223, 73, 255,0.3);
     }
+  }
+}
+
+.getUsers {
+  font-size: 16px;
+  width: 200px;
+  height: 50px;
+  align-self: center;
+  border-radius: 20px;
+  background: rgba(223, 73, 255,0.3);
+
+  &:hover {
+    background: rgba(223, 73, 255);
+  }
+
+  &:focus {
+    text-decoration: underline;
   }
 }
