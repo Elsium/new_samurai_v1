@@ -25,14 +25,16 @@ const usersReducer = (state = initialState, action) => {
                 } )
             };
         case SET_USERS:
+            //TODO refactor here
+            if (state.users.length === action.users.length) return state;
             return {...state, users: [...state.users, ...action.users]}
         default:
             return state;
     }
 }
 
-export const subscribeAC = (userID) => ({type: SUBSCRIBE, userID})
-export const unsubscribeAC = (userID) => ({type: UNSUBSCRIBE, userID})
+export const subscribeAC = (userID) => ({type: SUBSCRIBE, userID: userID})
+export const unsubscribeAC = (userID) => ({type: UNSUBSCRIBE, userID: userID})
 export const setUsersAC = (users) => ({type: SET_USERS, users: users})
 
 export default usersReducer;

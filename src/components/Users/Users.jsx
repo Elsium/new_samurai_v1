@@ -96,6 +96,7 @@ const Users = (props) => {
                 subscribed: false,
             }])
     }
+    console.log(props.users)
 
     return (
         <section className={style.container}>
