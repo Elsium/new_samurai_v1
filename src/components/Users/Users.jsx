@@ -42,6 +42,7 @@ class Users extends React.Component {
                             count={pageCount}
                             showFirstButton showLastButton
                             page={this.props.currentPage}
+                            color='secondary'
                             onChange={(e, page) => {this.onChangePage(page)}}/>
                 <div className={style.users}>
                     {this.props.users.map(u => <div className={style.user} key={u.id}>
