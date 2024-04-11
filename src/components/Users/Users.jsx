@@ -47,7 +47,7 @@ const Users = (props) => {
                         <div className={style.subBtn}>
                             { u.followed
                                 ? <button onClick={() => {props.unfollow(u.id)}}>Unsubscribe</button>
-                                : <button onClick={() => {props.following(u.id)}}>Subscribe</button>
+                                : <button onClick={() => {props.follow(u.id)}}>Subscribe</button>
                             }
                         </div>
                     </div>)}
