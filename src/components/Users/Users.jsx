@@ -1,8 +1,9 @@
 import React from "react";
 import style from "./Users.module.scss"
-import user from "./img/user.jpg"
+import user from "../../assets/img/user.jpg"
 import {Pagination} from "@mui/material";
-import loader from "./img/loader.svg"
+import Loader from "../UI/Loader/Loader";
+import {NavLink} from "react-router-dom";
 
 const Users = (props) => {
     const pageCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -31,7 +32,9 @@ const Users = (props) => {
                     {props.users.map(u => <div className={style.user} key={u.id}>
                         <div className={style.first}>
                             <div className={style.avatar}>
-                                <img src={!!u.photos.small ? u.photos.small : user} alt=""/>
+                                <NavLink to={`/profile/${u.id}`}>
+                                    <img src={!!u.photos.small ? u.photos.small : user} alt=""/>
+                                </NavLink>
                             </div>
                             <div>
                                 <div className={style.name}>{u.name} {/*u.surname*/}</div>
@@ -52,9 +55,7 @@ const Users = (props) => {
                         </div>
                     </div>)}
                 </div>
-                : <div className={style.loading}>
-                    <img src={loader} alt="Loading..."/>
-                </div>
+                : <Loader/>
             }
         </section>
     )

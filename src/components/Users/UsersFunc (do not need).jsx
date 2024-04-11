@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Users.module.scss"
 import axios from "axios";
-import user from "./img/user.jpg"
+import user from "../../assets/img/user.jpg"
 
 const Users = (props) => {
     const getUsers = () => {
