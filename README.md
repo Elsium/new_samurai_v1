@@ -16,4 +16,4 @@
 14. **02.04.2024** - reached the 48th lesson
 15. **10.04.2024** - reached the 55th lesson
 16. **11.04.2024** - reached the 59th lesson
-17. **12.04.2024** - reached the 
+17. **12.04.2024** - reached the 64th lesson
