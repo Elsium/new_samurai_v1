@@ -7,7 +7,7 @@ import {NavLink} from "react-router-dom";
 import {FollowAPI} from "../../api/api";
 
 const Users = (props) => {
-    const pageCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    const pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
     // let pages = [];
     // for (let i = 1; i <= pageCount; i++) {
     //     pages.push(i);
@@ -45,23 +45,27 @@ const Users = (props) => {
                         <div className={style.second}>
                             <div>
                                 <div className={style.location}>{/*u.location.city*/"city"}, <br/> {/*u.location.country*/"country"}</div>
-                                <div className={style.subscribers}>{/*u.subscribes*/"count"} <span>sub</span></div>
+                                <div className={style.subscribers}>{/*u.subscribes*/"count"} <span>followers</span></div>
                             </div>
                         </div>
                         <div className={style.subBtn}>
                             { u.followed
-                                ? <button onClick={() => {
+                                ? <button disabled={props.isFollowing.some(id => id === u.id)} onClick={() => {
+                                    props.setFollowingProgress(true, u.id);
                                     FollowAPI.unfollow(u.id)
                                         .then (response => {
-                                            if (response.data.resultCode === 0) props.unfollow(u.id)
+                                            if (response.data.resultCode === 0) props.unfollow(u.id);
+                                            props.setFollowingProgress(false, u.id);
                                         })
-                                    }}>Unsubscribe</button>
-                                : <button onClick={() => {
+                                    }}>Unfollow</button>
+                                : <button disabled={props.isFollowing.some(id => id === u.id)} onClick={() => {
+                                    props.setFollowingProgress(true, u.id);
                                     FollowAPI.follow(u.id)
                                         .then (response => {
-                                            if (response.data.resultCode === 0) props.follow(u.id)
+                                            if (response.data.resultCode === 0) props.follow(u.id);
+                                            props.setFollowingProgress(false, u.id);
                                         })
-                                    }}>Subscribe</button>
+                                    }}>Follow</button>
                             }
                         </div>
                     </div>)}

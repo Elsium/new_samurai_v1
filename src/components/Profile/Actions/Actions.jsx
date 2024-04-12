@@ -6,7 +6,7 @@ const Actions = () => {
         <section className={style.wrapper}>
             <div>message</div>
             <div>send money</div>
-            <div>subscribe</div>
+            <div>follow</div>
         </section>
     );
 }
