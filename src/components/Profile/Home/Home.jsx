@@ -13,8 +13,8 @@ const Home = (props) => {
                 <div className={style.name}>
                     {props.profile.fullName}
                 </div>
-                <div className={style.sub}>
-                    2.5M subscribers
+                <div className={style.add}>
+                    Additional info
                 </div>
             </div>
         </section>

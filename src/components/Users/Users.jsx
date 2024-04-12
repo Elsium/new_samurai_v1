@@ -4,6 +4,7 @@ import user from "../../assets/img/user.jpg"
 import {Pagination} from "@mui/material";
 import Loader from "../UI/Loader/Loader";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 const Users = (props) => {
     const pageCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -49,8 +50,28 @@ const Users = (props) => {
                         </div>
                         <div className={style.subBtn}>
                             { u.followed
-                                ? <button onClick={() => {props.unfollow(u.id)}}>Unsubscribe</button>
-                                : <button onClick={() => {props.follow(u.id)}}>Subscribe</button>
+                                ? <button onClick={() => {
+                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                        withCredentials: true,
+                                        headers: {
+                                            "API-KEY": "ed0e4876-e86a-4d69-8081-9ef1a6899525"
+                                        }
+                                    })
+                                        .then (response => {
+                                            if (response.data.resultCode === 0) props.unfollow(u.id)
+                                        })
+                                    }}>Unsubscribe</button>
+                                : <button onClick={() => {
+                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                        withCredentials: true,
+                                        headers: {
+                                            "API-KEY": "ed0e4876-e86a-4d69-8081-9ef1a6899525"
+                                        }
+                                    })
+                                        .then (response => {
+                                            if (response.data.resultCode === 0) props.follow(u.id)
+                                        })
+                                    }}>Subscribe</button>
                             }
                         </div>
                     </div>)}
