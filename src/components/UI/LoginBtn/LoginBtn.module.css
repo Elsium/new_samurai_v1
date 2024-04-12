@@ -1,0 +1,12 @@
+.btn {
+    width: 120px;
+    height: 35px;
+    background: rgb(209, 177, 255);
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.btn:hover {
+    background: rgb(180, 128, 255);
+    color: white;
+}
