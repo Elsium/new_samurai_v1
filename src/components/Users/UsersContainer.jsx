@@ -1,7 +1,7 @@
-import React from "react";
-import axios from "axios";
-import Users from "./Users";
-import {connect} from "react-redux";
+import React from 'react';
+import axios from 'axios';
+import Users from './Users';
+import {connect} from 'react-redux';
 import {
     setUsers,
     follow,
@@ -9,7 +9,7 @@ import {
     setCurrentPage,
     setTotalUsersCount,
     setFetching
-} from "../../redux/usersReducer";
+} from '../../redux/usersReducer';
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -73,4 +73,6 @@ const mapStateToProps = (state) => ({
 //     }
 // })
 
-export default connect(mapStateToProps, {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setFetching})(UsersContainer);
+export default connect
+(mapStateToProps, {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setFetching})
+(UsersContainer);

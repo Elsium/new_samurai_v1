@@ -16,7 +16,9 @@ const App = () => {
             <Nav/>
             <main className={style.main}>
                 <Routes>
-                    <Route path={`/profile/*`} element={<ProfileContainer/>}/>
+                    <Route path={`/profile`} element={<ProfileContainer/>}>
+                        <Route path={`:userID?`} element={<ProfileContainer/>}/>
+                    </Route>
                     <Route path={`/dialog/*`} element={<DialogsContainer/>}/>
                     <Route path={`/news`} element={<News/>}/>
                     <Route path={`/music`} element={<Music/>}/>
