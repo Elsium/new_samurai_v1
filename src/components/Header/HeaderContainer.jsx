@@ -8,7 +8,6 @@ const HeaderContainer = (props) => {
 
     useEffect(() => {
         props.getUserAuth();
-        console.log(props)
     }, [])
 
     return (
