@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import {setUserAuth} from '../../redux/authReducer';
+import {getUserAuth} from '../../redux/authReducer';
 import Header from './Header';
 
 
 const HeaderContainer = (props) => {
 
     useEffect(() => {
-        props.setUserAuth();
+        props.getUserAuth();
     }, [])
 
     return (
@@ -21,4 +21,4 @@ const mapStateToProps = (state) => ({
     id: state.auth.id
 })
 
-export default connect(mapStateToProps, {setUserAuth})(HeaderContainer);
+export default connect(mapStateToProps, {getUserAuth})(HeaderContainer);

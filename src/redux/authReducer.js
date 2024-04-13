@@ -24,7 +24,7 @@ const authReducer = (state = initialState, action) => {
 
 const _setUserAuthSuccess = (id, login, email) => ({type: SET_USER_DATA, data: {id, login, email}})
 
-export const setUserAuth = () => (dispatch) => {
+export const getUserAuth = () => (dispatch) => {
     authAPI.authMe()
         .then(response => {
             if(response.data.resultCode === 0) {
