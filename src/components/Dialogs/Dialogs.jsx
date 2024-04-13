@@ -1,10 +1,13 @@
 import React from 'react';
+import {Navigate} from "react-router-dom";
 import style from './Dialogs.module.scss'
 import Message from './Message/Message';
 import Dialog from './Dialog/Dialog';
 import SendMsg from './SendMsg/SendMsg';
 
 const Dialogs = (props) => {
+    if (!props.isAuth) return <Navigate to={`/login`} />
+
     let dialogs = props.dialogsData.dialogs
         .map(item => <Dialog key={item.userID}
                              name={item.name}

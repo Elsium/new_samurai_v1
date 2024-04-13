@@ -31,7 +31,8 @@ class ProfileContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
     profile: state.profileData.profile,
-    authID: state.auth.id
+    authID: state.auth.id,
+    isAuth: state.auth.isAuth
 })
 
 export default connect(mapStateToProps, {getProfile})(withRouter(ProfileContainer));
