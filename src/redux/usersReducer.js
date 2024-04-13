@@ -1,4 +1,4 @@
-import {UserAPI} from "../api/api";
+import {UserAPI} from '../api/api';
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
@@ -51,13 +51,13 @@ const usersReducer = (state = initialState, action) => {
             return state;
     }
 }
-export const _followSuccess = (id) => ({type: FOLLOW, id})
-export const _unfollowSuccess = (id) => ({type: UNFOLLOW, id})
-export const _setUsers = (users) => ({type: SET_USERS, users})
-export const _setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page})
-export const _setTotalUsersCount = (count) => ({type: SET_TOTAL_USERS_COUNT, count})
-export const _setFetching = (isFetching) => ({type: SET_FETCHING, isFetching})
-export const _setFollowingProgress = (isFollowing, id) => ({type: SET_FOLLOWING_PROGRESS, isFollowing, id})
+const _followSuccess = (id) => ({type: FOLLOW, id})
+const _unfollowSuccess = (id) => ({type: UNFOLLOW, id})
+const _setUsers = (users) => ({type: SET_USERS, users})
+const _setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page})
+const _setTotalUsersCount = (count) => ({type: SET_TOTAL_USERS_COUNT, count})
+const _setFetching = (isFetching) => ({type: SET_FETCHING, isFetching})
+const _setFollowingProgress = (isFollowing, id) => ({type: SET_FOLLOWING_PROGRESS, isFollowing, id})
 
 export const getUsers = (currentPage, pageSize) => (dispatch) => {
     dispatch(_setFetching(true));

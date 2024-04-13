@@ -1,4 +1,4 @@
-import {profileAPI} from "../api/api";
+import {profileAPI} from '../api/api';
 
 const CREATE_POST = 'CREATE_POST'
 const UPDATE_POST = 'UPDATE_POST'
@@ -25,18 +25,18 @@ let initialState = {
             commentsCount: 15
         }
     ],
-    currentPostText: "",
+    currentPostText: '',
     profile: null,
 }
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case CREATE_POST:
-            if (state.currentPostText === "") return state
+            if (state.currentPostText === '') return state
 
             const time = new Date();
-            let tempDate = ("0" + time.getDate()).slice(-2) + "." + ("0" + (time.getMonth() + 1)).slice(-2) + "." + time.getFullYear();
-            let tempTime = ("0" + time.getHours()).slice(-2) + ":" + ("0" + time.getMinutes()).slice(-2);
+            let tempDate = ('0' + time.getDate()).slice(-2) + '.' + ('0' + (time.getMonth() + 1)).slice(-2) + '.' + time.getFullYear();
+            let tempTime = ('0' + time.getHours()).slice(-2) + ':' + ('0' + time.getMinutes()).slice(-2);
 
             let newPost = {
                 postID: state.posts.length + 1,
@@ -51,7 +51,7 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 posts: [newPost, ...state.posts],
-                currentPostText: ""
+                currentPostText: ''
             };
         case UPDATE_POST:
             return {
@@ -70,7 +70,7 @@ const profileReducer = (state = initialState, action) => {
 
 export const CreatePostActionCreator = () => ({type: CREATE_POST})
 export const updatePostActionCreator = (text) => ({type: UPDATE_POST, text: text})
-export const _setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+const _setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 
 export const getProfile = (id) => (dispatch) => {
     profileAPI.getProfile(id)
