@@ -22,10 +22,13 @@ export const UserAPI = {
     unfollow(id) {
         return instance.delete(`follow/${id}`);
     },
-    authMe() {
-        return instance.get(`auth/me`);
-    },
     getProfile(id) {
         return instance.get(`profile/${id}`);
     }
+}
+
+export const authAPI = {
+    authMe() {
+    return instance.get(`auth/me`);
+}
 }
