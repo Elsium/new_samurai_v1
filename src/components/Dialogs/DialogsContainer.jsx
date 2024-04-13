@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
 import {sendMsgActionCreator, updateMsgActionCreator} from '../../redux/dialogsReducer';
 import Dialogs from './Dialogs';
+import WithAuth from "../HOC/withAuth";
 
 const mapStateToProps = (state) => ({
     dialogsData: state.dialogsData,
-    isAuth: state.auth.isAuth
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -12,6 +12,6 @@ const mapDispatchToProps = (dispatch) => ({
     sendMsg: () => dispatch(sendMsgActionCreator())
 })
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
-export default DialogsContainer;
+
+export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(Dialogs));

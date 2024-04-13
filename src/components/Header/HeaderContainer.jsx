@@ -8,6 +8,7 @@ const HeaderContainer = (props) => {
 
     useEffect(() => {
         props.getUserAuth();
+        console.log(props)
     }, [])
 
     return (
@@ -18,7 +19,8 @@ const HeaderContainer = (props) => {
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
     login: state.auth.login,
-    id: state.auth.id
+    id: state.auth.id,
+    userProfile: state.auth.userProfile
 })
 
 export default connect(mapStateToProps, {getUserAuth})(HeaderContainer);

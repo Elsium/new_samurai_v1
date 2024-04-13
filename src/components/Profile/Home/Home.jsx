@@ -8,7 +8,7 @@ const Home = (props) => {
             <div className={style.banner}></div>
             <div className={style.content}>
                 <img
-                    src={props.profile.photos.large ? props.profile.photos.large : user}
+                    src={props.profile.photos.large || user}
                     alt=''/>
                 <div className={style.name}>
                     {props.profile.fullName}

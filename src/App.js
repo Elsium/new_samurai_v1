@@ -8,6 +8,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import Nav from './components/Nav/Nav';
 import News from './components/News/News';
 import Music from './components/Music/Music';
+import Login from "./components/Login/Login";
 
 const App = () => {
     return (
@@ -23,6 +24,7 @@ const App = () => {
                     <Route path={`/news`} element={<News/>}/>
                     <Route path={`/music`} element={<Music/>}/>
                     <Route path={`/users`} element={<UsersContainer/>}/>
+                    <Route path={`/login`} element={<Login/>}/>
                 </Routes>
             </main>
         </div>

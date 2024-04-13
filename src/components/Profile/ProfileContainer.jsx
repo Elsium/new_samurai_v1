@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {getProfile} from '../../redux/profileReducer';
 import Profile from './Profile';
 import Loader from '../UI/Loader/Loader';
+import WithAuth from "../HOC/withAuth";
 
 const withRouter = (Component) => {
     const ComponentWithRouterProps = (props) => {
@@ -31,8 +32,6 @@ class ProfileContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
     profile: state.profileData.profile,
-    authID: state.auth.id,
-    isAuth: state.auth.isAuth
 })
 
-export default connect(mapStateToProps, {getProfile})(withRouter(ProfileContainer));
+export default WithAuth(connect(mapStateToProps, {getProfile})(withRouter(ProfileContainer)));

@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {follow, unfollow, getUsers} from '../../redux/usersReducer';
 import Users from './Users';
+import WithAuth from "../HOC/withAuth";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -26,4 +27,4 @@ const mapStateToProps = (state) => ({
     isFollowing: state.usersPage.isFollowing,
 })
 
-export default connect(mapStateToProps, {follow, unfollow, getUsers})(UsersContainer);
+export default WithAuth(connect(mapStateToProps, {follow, unfollow, getUsers})(UsersContainer));

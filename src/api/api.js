@@ -12,7 +12,6 @@ export const UserAPI = {
     getUsers(currentPage, pageSize) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => {
-                debugger
                 return response.data;
             })
     },
@@ -29,6 +28,6 @@ export const UserAPI = {
 
 export const authAPI = {
     authMe() {
-    return instance.get(`auth/me`);
-}
+        return instance.get(`auth/me`);
+    }
 }

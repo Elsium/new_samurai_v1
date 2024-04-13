@@ -3,6 +3,7 @@ import logo from '../../img/logo.png';
 import style from './Header.module.scss'
 import {NavLink} from 'react-router-dom';
 import LoginButton from '../UI/LoginBtn/LoginBtn';
+import user from '../../assets/img/user.jpg'
 
 const Header = (props) => {
     return (
@@ -16,7 +17,7 @@ const Header = (props) => {
                 {props.isAuth
                     ? <NavLink to={`/profile/${props.id}`}>
                         <img
-                            src='https://yt3.googleusercontent.com/4ATipS780rafUGrk-eQxUhRVyAXcBNIONO1Pyta-0P7I0BPM89Rk1T4W1eB7PAzXS2Ms8m3cy0U=s900-c-k-c0x00ffffff-no-rj'
+                            src={props.userProfile ? props.userProfile.photos.small : user}
                             alt=''/>
                         <p>{props.login}</p>
                     </NavLink>

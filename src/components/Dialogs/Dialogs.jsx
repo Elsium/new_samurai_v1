@@ -6,7 +6,6 @@ import Dialog from './Dialog/Dialog';
 import SendMsg from './SendMsg/SendMsg';
 
 const Dialogs = (props) => {
-    if (!props.isAuth) return <Navigate to={`/login`} />
 
     let dialogs = props.dialogsData.dialogs
         .map(item => <Dialog key={item.userID}
