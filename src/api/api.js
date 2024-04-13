@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     headers: {
-        "API-KEY": "ed0e4876-e86a-4d69-8081-9ef1a6899525"
+        'API-KEY': 'ed0e4876-e86a-4d69-8081-9ef1a6899525'
     }
 })
 
@@ -15,10 +15,7 @@ export const UserAPI = {
                 debugger
                 return response.data;
             })
-    }
-}
-
-export const FollowAPI = {
+    },
     follow(id) {
         return instance.post(`follow/${id}`);
     },

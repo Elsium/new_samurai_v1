@@ -1,35 +1,15 @@
 import React from 'react';
-import Users from './Users';
 import {connect} from 'react-redux';
-import {
-    setUsers,
-    follow,
-    unfollow,
-    setCurrentPage,
-    setTotalUsersCount,
-    setFetching, setFollowingProgress
-} from '../../redux/usersReducer';
-import {UserAPI} from "../../api/api";
+import {follow, unfollow, getUsers} from '../../redux/usersReducer';
+import Users from './Users';
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.setFetching(true);
-        UserAPI.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(response => {
-                this.props.setFetching(false);
-                this.props.setUsers(response.items);
-                this.props.setTotalUsersCount(response.totalCount);
-            })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 
     onChangePage = (page) => {
-        this.props.setFetching(true);
-        this.props.setCurrentPage(page);
-        UserAPI.getUsers(page, this.props.pageSize)
-            .then(response => {
-                this.props.setFetching(false);
-                this.props.setUsers(response.items);
-            })
+        this.props.getUsers(page, this.props.pageSize);
     }
 
     render() {
@@ -41,8 +21,7 @@ class UsersContainer extends React.Component {
                       unfollow={this.props.unfollow}
                       follow={this.props.follow}
                       isFetching={this.props.isFetching}
-                      isFollowing={this.props.isFollowing}
-                      setFollowingProgress={this.props.setFollowingProgress}/>
+                      isFollowing={this.props.isFollowing}/>
     }
 }
 
@@ -55,27 +34,4 @@ const mapStateToProps = (state) => ({
     isFollowing: state.usersPage.isFollowing,
 })
 
-// const mapDispatchToProps = (dispatch) => ({
-//     following: (id) => {
-//         dispatch(followAC(id));
-//     },
-//     unfollow: (id) => {
-//         dispatch(unfollowAC(id));
-//     },
-//     setUsers: (users) => {
-//         dispatch(setUsersAC(users));
-//     },
-//     setCurrentPage: (page) => {
-//         dispatch(setCurrentPageAC(page))
-//     },
-//     setTotalUsersCount: (count) => {
-//         dispatch(setTotalUsersCountAC(count))
-//     },
-//     setFetching: (isFetching) => {
-//         dispatch(setFetchingAC(isFetching))
-//     }
-// })
-
-export default connect
-(mapStateToProps, {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setFetching, setFollowingProgress})
-(UsersContainer);
+export default connect(mapStateToProps, {follow, unfollow, getUsers})(UsersContainer);

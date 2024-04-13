@@ -1,10 +1,9 @@
-import React from "react";
-import Profile from "./Profile";
-import {connect} from "react-redux";
-import {setUserProfile} from "../../redux/profileReducer";
-import Loader from "../UI/Loader/Loader";
-import {useParams} from "react-router-dom";
-import {profileAPI} from "../../api/api";
+import React from 'react';
+import {useParams} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {getProfile} from '../../redux/profileReducer';
+import Profile from './Profile';
+import Loader from '../UI/Loader/Loader';
 
 const withRouter = (Component) => {
     const ComponentWithRouterProps = (props) => {
@@ -18,11 +17,8 @@ const withRouter = (Component) => {
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        const id = this.props.params.userID ? this.props.params.userID : this.props.authID
-        profileAPI.getProfile(id)
-            .then(response => {
-                this.props.setUserProfile(response.data)
-            })
+        const id = this.props.params.userID ? this.props.params.userID : this.props.authID;
+        this.props.getProfile(id);
     }
 
     render() {
@@ -38,6 +34,4 @@ const mapStateToProps = (state) => ({
     authID: state.auth.id
 })
 
-export default connect
-(mapStateToProps, {setUserProfile})
-(withRouter(ProfileContainer));
+export default connect(mapStateToProps, {getProfile})(withRouter(ProfileContainer));
