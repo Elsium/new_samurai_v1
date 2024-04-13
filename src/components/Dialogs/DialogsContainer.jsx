@@ -1,3 +1,4 @@
+import {compose} from "redux";
 import {connect} from 'react-redux';
 import {sendMsgActionCreator, updateMsgActionCreator} from '../../redux/dialogsReducer';
 import Dialogs from './Dialogs';
@@ -13,5 +14,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-
-export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(Dialogs));
+export default compose(
+    WithAuth,
+    connect(mapStateToProps, mapDispatchToProps)
+)(Dialogs)

@@ -1,5 +1,6 @@
 import React from 'react';
 import {useParams} from 'react-router-dom';
+import {compose} from "redux";
 import {connect} from 'react-redux';
 import {getProfile} from '../../redux/profileReducer';
 import Profile from './Profile';
@@ -34,4 +35,8 @@ const mapStateToProps = (state) => ({
     profile: state.profileData.profile,
 })
 
-export default WithAuth(connect(mapStateToProps, {getProfile})(withRouter(ProfileContainer)));
+export default compose(
+    WithAuth,
+    withRouter,
+    connect(mapStateToProps, {getProfile})
+)(ProfileContainer);

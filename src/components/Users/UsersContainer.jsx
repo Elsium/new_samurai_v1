@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {compose} from "redux";
 import {follow, unfollow, getUsers} from '../../redux/usersReducer';
 import Users from './Users';
 import WithAuth from "../HOC/withAuth";
@@ -27,4 +28,7 @@ const mapStateToProps = (state) => ({
     isFollowing: state.usersPage.isFollowing,
 })
 
-export default WithAuth(connect(mapStateToProps, {follow, unfollow, getUsers})(UsersContainer));
+export default compose(
+    WithAuth,
+    connect(mapStateToProps, {follow, unfollow, getUsers})
+)(UsersContainer)
