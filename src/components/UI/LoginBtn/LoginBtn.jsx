@@ -1,12 +1,12 @@
-import React from "react";
-import {NavLink} from "react-router-dom";
-import style from "./LoginBtn.module.css"
+import React from 'react';
+import {NavLink} from 'react-router-dom';
+import style from './LoginBtn.module.css'
 
-const Loginbtn = () => {
+const LoginButton = () => {
     return (
         <NavLink to={`/login`} className={style.btn}>
             Login
         </NavLink>
     )
 }
-export default Loginbtn;
+export default LoginButton;

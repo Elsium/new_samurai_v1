@@ -22,7 +22,7 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const _setUserAuthSuccess = (id, login, email) => ({type: SET_USER_DATA, data: {id, login, email}})
+const _setUserAuthSuccess = (id, login, email) => ({type: SET_USER_DATA, data: {id, login, email}})
 
 export const setUserAuth = () => (dispatch) => {
     authAPI.authMe()

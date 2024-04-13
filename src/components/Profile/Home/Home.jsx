@@ -1,6 +1,6 @@
-import React from "react";
-import style from "./Home.module.scss"
-import user from "../../../assets/img/user.jpg"
+import React from 'react';
+import style from './Home.module.scss'
+import user from '../../../assets/img/user.jpg'
 
 const Home = (props) => {
     return (
@@ -9,7 +9,7 @@ const Home = (props) => {
             <div className={style.content}>
                 <img
                     src={props.profile.photos.large ? props.profile.photos.large : user}
-                    alt=""/>
+                    alt=''/>
                 <div className={style.name}>
                     {props.profile.fullName}
                 </div>

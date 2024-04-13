@@ -1,7 +1,7 @@
-import React, {useRef, useEffect} from "react";
-import style from "./MyPosts.module.scss"
-import create from "./img/create.png"
-import Post from "./Post/Post";
+import React, {useRef, useEffect} from 'react';
+import style from './MyPosts.module.scss'
+import create from './img/create.png'
+import Post from './Post/Post';
 
 const MyPosts = (props) => {
     let postElement = useRef(null);
@@ -16,11 +16,11 @@ const MyPosts = (props) => {
                            date={item.date}/>)
 
     useEffect(() => {
-        if(postElement.current) {
+        if (postElement.current) {
             postElement.current.style.height = '40px';
             postElement.current.style.height = `${postElement.current.scrollHeight}px`
         }
-    });
+    }, [props.profileData.currentPostText]);
 
     let onCreatePost = () => props.CreatePost()
     let onPostChange = () => props.postChange(postElement.current.value)
@@ -31,10 +31,10 @@ const MyPosts = (props) => {
                 <textarea ref={postElement}
                           value={props.profileData.currentPostText}
                           onChange={onPostChange}
-                          placeholder="Write a post...">
+                          placeholder='Write a post...'>
                 </textarea>
                 <button className={style.button} onClick={onCreatePost}>
-                    <img src={create} alt="send"/>
+                    <img src={create} alt='send'/>
                 </button>
             </div>
             <div className={style.posts}>
