@@ -1,25 +1,17 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
 import {compose} from "redux";
 import {connect} from 'react-redux';
 import {getProfile} from '../../redux/profileReducer';
+import {follow, unfollow} from "../../redux/usersReducer";
 import Profile from './Profile';
 import Loader from '../UI/Loader/Loader';
 import WithAuth from "../HOC/withAuth";
-
-const withRouter = (Component) => {
-    const ComponentWithRouterProps = (props) => {
-        const params = useParams();
-        return <Component {...props} params={params}/>
-    }
-
-    return ComponentWithRouterProps;
-}
+import withRouter from "../HOC/withRouter";
 
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        const id = this.props.params.userID ? this.props.params.userID : this.props.authID;
+        const id = this.props.params.userID ? this.props.params.userID : this.props.userId;
         this.props.getProfile(id);
     }
 
@@ -33,10 +25,12 @@ class ProfileContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
     profile: state.profileData.profile,
+    userId: state.auth.id
 })
+
 
 export default compose(
     WithAuth,
     withRouter,
-    connect(mapStateToProps, {getProfile})
+    connect(mapStateToProps, {getProfile, follow, unfollow})
 )(ProfileContainer);

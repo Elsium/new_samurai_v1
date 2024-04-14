@@ -14,7 +14,19 @@ const Home = (props) => {
                     {props.profile.fullName}
                 </div>
                 <div className={style.add}>
-                    Additional info
+                    { props.userId === props.profile.userId
+                        ? <div>edit</div>
+                        : <div>
+                            {/*{followed*/}
+                            {/*    ? <button disabled={props.isFollowing.some(id => id === u.id)} onClick={() => {*/}
+                            {/*        props.unfollow(u.id)*/}
+                            {/*    }}>Unfollow</button>*/}
+                            {/*    : <button disabled={props.isFollowing.some(id => id === u.id)} onClick={() => {*/}
+                            {/*        props.follow(u.id)*/}
+                            {/*    }}>Follow</button>}*/}
+                            <div>message</div>
+                        </div>
+                    }
                 </div>
             </div>
         </section>
