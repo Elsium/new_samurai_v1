@@ -2,10 +2,10 @@ import React from 'react';
 import style from './Additional.module.scss'
 import Status from "./Status/Status";
 
-const Additional = () => {
+const Additional = (props) => {
     return (
         <section className={style.wrapper}>
-            <Status status={"hello"}/>
+            <Status status={props.status} updateStatus={props.updateStatus}/>
             <div>
                 <p>job</p>
                 <p>info</p>

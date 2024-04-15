@@ -1,0 +1,39 @@
+.wrapper {
+  height: 70%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+
+  .changed {
+
+    div {
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      background: none;
+      font-style: italic;
+      line-height: 16px;
+      font-size: 14px;
+    }
+  }
+
+  .noChanged {
+
+    div {
+      margin-bottom: 5px;
+    }
+
+    span {
+      width: 100%;
+      font-style: italic;
+      line-height: 16px;
+      font-size: 14px;
+    }
+  }
+}
+
+.nostatus {
+  text-decoration: underline;
+}

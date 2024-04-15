@@ -14,7 +14,7 @@ const Home = (props) => {
                     {props.profile.fullName}
                 </div>
                 <div className={style.add}>
-                    { props.userId === props.profile.userId
+                    { props.userID === props.profile.userId
                         ? <div>edit</div>
                         : <div>
                             {/*{followed*/}

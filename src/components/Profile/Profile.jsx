@@ -8,7 +8,7 @@ const Profile = (props) => {
     return (
         <section>
             <Home {...props}/>
-            <Actions/>
+            <Actions status={props.status} updateStatus={props.updateStatus}/>
             <MyPostsContainer/>
         </section>
     );
