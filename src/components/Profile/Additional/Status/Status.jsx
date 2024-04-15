@@ -24,6 +24,14 @@ class Status extends React.Component {
             status: e.currentTarget.value,
         })
     }
+    componentDidUpdate(prevProps, prevState) {
+        if(prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status,
+            })
+        }
+    }
+
     render() {
         return (
             <div className={style.wrapper}>
@@ -34,7 +42,7 @@ class Status extends React.Component {
                     </div>
                     : <div className={style.noChanged}>
                         <div>Status:</div>
-                        <span onDoubleClick={this.activateEditMode} className={this.props.status ? "" : style.nostatus}>{this.props.status || "No have status yet."}</span>
+                        <span onDoubleClick={this.activateEditMode} className={this.props.status ? "" : style.nostatus}>{this.props.status || "No status yet."}</span>
                     </div>
                 }
             </div>

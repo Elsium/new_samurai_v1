@@ -1,4 +1,4 @@
-import {authAPI, profileAPI, UserAPI} from '../api/api';
+import {authAPI, profileAPI} from '../api/api';
 
 const SET_USER_DATA = 'SET_USER_DATA'
 const SET_MY_PHOTO = 'SET_MY_PHOTO'
