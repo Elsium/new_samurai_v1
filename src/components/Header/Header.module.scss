@@ -69,10 +69,13 @@
   }
 
   &:hover  {
-    background: rgb(245, 245, 245);
     div .logout {
       display: block;
     }
   }
+}
+
+.profile.active:hover {
+  background: rgb(245, 245, 245);
 }
 

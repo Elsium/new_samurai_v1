@@ -5,7 +5,6 @@ import {getProfile, getStatus, updateStatus} from '../../redux/profileReducer';
 import {follow, unfollow} from "../../redux/usersReducer";
 import Profile from './Profile';
 import Loader from '../UI/Loader/Loader';
-import WithAuth from "../HOC/withAuth";
 import withRouter from "../HOC/withRouter";
 
 
@@ -32,7 +31,6 @@ const mapStateToProps = (state) => ({
 
 
 export default compose(
-    WithAuth,
     withRouter,
     connect(mapStateToProps, {getProfile, getStatus, follow, unfollow, updateStatus})
 )(ProfileContainer);
