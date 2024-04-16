@@ -1,9 +1,9 @@
 import React from 'react';
-import {Navigate} from "react-router-dom";
 import style from './Dialogs.module.scss'
 import Message from './Message/Message';
 import Dialog from './Dialog/Dialog';
-import SendMsg from './SendMsg/SendMsg';
+import SendMsgFormRedux from './SendMsg/SendMsg';
+import {sendMsgActionCreator} from "../../redux/dialogsReducer";
 
 const Dialogs = (props) => {
 
@@ -19,6 +19,10 @@ const Dialogs = (props) => {
                               from={item.from}
                               text={item.text}
                               time={item.time}/>)
+
+    const addNewMsg = (values) => {
+        props.sendMsg(values.currentText)
+    }
 
     return (
         <section className={style.container}>
@@ -42,9 +46,7 @@ const Dialogs = (props) => {
                 <div className={style.messagesItems}>
                     {msg}
                 </div>
-                <SendMsg sendMsg={props.sendMsg}
-                         updateMsg={props.updateMsg}
-                         currentMsgText={props.dialogsData.currentMsgText}/>
+                <SendMsgFormRedux onSubmit={addNewMsg}/>
             </div>
         </section>
     );

@@ -1,5 +1,4 @@
 const SEND_MSG = 'SEND_MSG'
-const UPDATE_MSG = 'UPDATE_MSG'
 
 let initialState = {
     msg: [
@@ -16,14 +15,13 @@ let initialState = {
         {userID: 2, name: 'Ivan Dog'},
         {userID: 3, name: 'Lisa Cat'},
         {userID: 4, name: 'Marina El'}
-    ],
-    currentMsgText: "",
+    ]
 }
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SEND_MSG:
-            if (state.currentMsgText === "") return state
+            if (action.msg === "") return state
 
             const time = new Date();
             let tempTime = ("0" + time.getHours()).slice(-2) + ":" + ("0" + time.getMinutes()).slice(-2);
@@ -31,28 +29,19 @@ const dialogsReducer = (state = initialState, action) => {
             let newMsg = {
                 userID: 4,
                 msgID: state.msg.length + 1,
-                text: state.currentMsgText,
+                text: action.msg,
                 time: tempTime,
                 from: 0
             };
 
             return {
                 ...state,
-                currentMsgText: "",
                 msg: [newMsg, ...state.msg]
-            };
-        case UPDATE_MSG:
-            return {
-                ...state,
-                currentMsgText: action.text
             };
         default:
             return state;
     }
 }
-
-
-export const sendMsgActionCreator = () => ({type: SEND_MSG})
-export const updateMsgActionCreator = (text) => ({type: UPDATE_MSG, text: text})
+export const sendMsg = (msg) => ({type: SEND_MSG, msg})
 
 export default dialogsReducer;

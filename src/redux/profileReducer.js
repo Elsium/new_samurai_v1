@@ -1,7 +1,6 @@
 import {profileAPI} from '../api/api';
 
 const CREATE_POST = 'CREATE_POST'
-const UPDATE_POST = 'UPDATE_POST'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_STATUS = 'SET_STATUS'
 
@@ -26,7 +25,6 @@ let initialState = {
             commentsCount: 15
         }
     ],
-    currentPostText: '',
     profile: null,
     status: "",
 }
@@ -34,7 +32,7 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case CREATE_POST:
-            if (state.currentPostText === '') return state
+            if (action.post === '') return state
 
             const time = new Date();
             let tempDate = ('0' + time.getDate()).slice(-2) + '.' + ('0' + (time.getMonth() + 1)).slice(-2) + '.' + time.getFullYear();
@@ -43,7 +41,7 @@ const profileReducer = (state = initialState, action) => {
             let newPost = {
                 postID: state.posts.length + 1,
                 name: 'Diana Fox',
-                text: state.currentPostText,
+                text: action.post,
                 date: tempDate,
                 time: tempTime,
                 likesCount: 0,
@@ -52,13 +50,7 @@ const profileReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                posts: [newPost, ...state.posts],
-                currentPostText: ''
-            };
-        case UPDATE_POST:
-            return {
-                ...state,
-                currentPostText: action.text
+                posts: [newPost, ...state.posts]
             };
         case SET_USER_PROFILE:
             return {
@@ -75,8 +67,7 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const CreatePostActionCreator = () => ({type: CREATE_POST})
-export const updatePostActionCreator = (text) => ({type: UPDATE_POST, text: text})
+export const createPost = (post) => ({type: CREATE_POST, post})
 const _setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 const _setUserStatus = (status) => ({type: SET_STATUS, status})
 

@@ -1,0 +1,53 @@
+.newPost {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px;
+  width: 60%;
+  background: rgb(250, 250, 250);
+
+  textarea {
+    font-size: 16px;
+    line-height: 18px;
+    resize: none;
+    overflow: auto;
+    padding: 10px 5px;
+    width: 80%;
+    max-height: 200px;
+    background: none;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(129, 129, 129, 50%);
+      border-radius: 20px;
+    }
+  }
+
+  .button {
+    cursor: pointer;
+    margin-left: 20px;
+    width: 30px;
+    height: 30px;
+    background: none;
+    user-select: none;
+
+    &:focus {
+      border: 1px solid rgb(190, 190, 190);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      transform: rotate(90deg);
+    }
+  }
+}

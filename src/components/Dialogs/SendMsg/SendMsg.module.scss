@@ -2,40 +2,37 @@
   margin: 0 auto;
   width: 80%;
   height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  textarea {
+    resize: none;
+    padding: 10px 5px;
+    margin-bottom: 10px;
+    width: 80%;
+    height: 40px;
+    max-height: 150px;
+    border-radius: 10px;
+    background: rgb(245, 245, 245);
+  }
 
-    textarea {
-      resize: none;
-      padding: 10px 5px;
-      margin-bottom: 10px;
-      width: 80%;
-      height: 40px;
-      max-height: 150px;
-      border-radius: 10px;
-      background: rgb(245, 245, 245);
-    }
+  textarea:focus {
+    border: 1px solid #656565;
+  }
 
-    textarea:focus {
-      border: 1px solid #656565;
-    }
+  button {
+    background: none;
+    cursor: pointer;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
 
-    div {
-      cursor: pointer;
-      margin-left: 10px;
-      width: 40px;
-      height: 40px;
-
-      img {
-        width: 100%;
-        height: 100%;
-        transform: rotate(90deg);
-        user-select: none;
-      }
+    img {
+      width: 100%;
+      height: 100%;
+      transform: rotate(90deg);
+      user-select: none;
     }
   }
 }

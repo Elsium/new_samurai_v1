@@ -1,35 +1,29 @@
 import React, {useRef} from 'react';
 import style from './SendMsg.module.scss'
 import send from './img/send.png'
+import {Field, reduxForm} from "redux-form";
 
-const SendMsg = (props) => {
+const SendMsgForm = (props) => {
     let msgElement = useRef(null);
-
-    let onUpdateMsg = () => props.updateMsg(msgElement.current.value)
-    let onSendMsg = () => props.sendMsg()
-
     let sendMsgEnter = (event) => {
+        console.log(event)
         if (event.key === 'Enter' && !event.shiftKey) {
             event.preventDefault();
-            onSendMsg();
+            props.onSubmit({currentText: msgElement.current.value})
         }
     }
 
     return (
-        <div className={style.container}>
-            <div>
-                <textarea ref={msgElement}
-                          value={props.currentMsgText}
-                          onChange={onUpdateMsg}
-                          onKeyDown={sendMsgEnter}
-                          placeholder='Type your message...'>
-                </textarea>
-                <div onClick={onSendMsg}>
-                    <img src={send} alt=''/>
-                </div>
-            </div>
-        </div>
+        <form onSubmit={props.handleSubmit} className={style.container}>
+            <Field component={'textarea'} name={'currentText'} ref={msgElement} placeholder='Type your message...'
+                   onKeyDown={sendMsgEnter}/>
+            <button>
+                <img src={send} alt=''/>
+            </button>
+        </form>
     );
 }
 
-export default SendMsg;
+const SendMsgFormRedux = reduxForm({form: 'sendMsg'})(SendMsgForm)
+
+export default SendMsgFormRedux;

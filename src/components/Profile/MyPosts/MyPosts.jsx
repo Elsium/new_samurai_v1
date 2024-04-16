@@ -1,10 +1,9 @@
-import React, {useRef, useEffect} from 'react';
+import React from 'react';
 import style from './MyPosts.module.scss'
-import create from './img/create.png'
 import Post from './Post/Post';
+import AddPost from "./AddPost/AddPost";
 
 const MyPosts = (props) => {
-    let postElement = useRef(null);
 
     let posts = props.profileData.posts
         .map(item => <Post key={item.postID}
@@ -15,28 +14,13 @@ const MyPosts = (props) => {
                            time={item.time}
                            date={item.date}/>)
 
-    useEffect(() => {
-        if (postElement.current) {
-            postElement.current.style.height = '40px';
-            postElement.current.style.height = `${postElement.current.scrollHeight}px`
-        }
-    }, [props.profileData.currentPostText]);
-
-    let onCreatePost = () => props.CreatePost()
-    let onPostChange = () => props.postChange(postElement.current.value)
+    const onSubmit = (values) => {
+        props.createPost(values.currentText)
+    }
 
     return (
         <section className={style.main}>
-            <div className={style.newPost}>
-                <textarea ref={postElement}
-                          value={props.profileData.currentPostText}
-                          onChange={onPostChange}
-                          placeholder='Write a post...'>
-                </textarea>
-                <button className={style.button} onClick={onCreatePost}>
-                    <img src={create} alt='send'/>
-                </button>
-            </div>
+            <AddPost onSubmit={onSubmit} formValues={props.formValues}/>
             <div className={style.posts}>
                 {posts}
             </div>

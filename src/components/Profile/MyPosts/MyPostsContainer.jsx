@@ -1,15 +1,13 @@
 import {connect} from 'react-redux';
-import {CreatePostActionCreator, updatePostActionCreator} from '../../../redux/profileReducer';
+import {createPost} from '../../../redux/profileReducer';
 import MyPosts from './MyPosts';
+import {getFormValues} from "redux-form";
 
 const mapStateToProps = (state) => ({
-        profileData: state.profileData
-})
-const mapDispatchToProps = (dispatch) => ({
-        postChange: (text) => dispatch(updatePostActionCreator(text)),
-        CreatePost: () => dispatch(CreatePostActionCreator())
+        profileData: state.profileData,
+        formValues: getFormValues('addPost')(state) || ''
 })
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
+const MyPostsContainer = connect(mapStateToProps, {createPost})(MyPosts);
 
 export default MyPostsContainer;
