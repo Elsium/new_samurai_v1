@@ -3,7 +3,6 @@ import style from './Dialogs.module.scss'
 import Message from './Message/Message';
 import Dialog from './Dialog/Dialog';
 import SendMsgFormRedux from './SendMsg/SendMsg';
-import {sendMsgActionCreator} from "../../redux/dialogsReducer";
 
 const Dialogs = (props) => {
 

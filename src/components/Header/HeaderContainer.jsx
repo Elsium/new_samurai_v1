@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {getUserAuth, setLogout} from '../../redux/authReducer';
 import Header from './Header';
 import {compose} from "redux";
-import withRouter from "../HOC/withRouter";
 
 const HeaderContainer = (props) => {
 
