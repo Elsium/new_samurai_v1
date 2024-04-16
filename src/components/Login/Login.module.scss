@@ -50,6 +50,7 @@
 
   .input {
     margin-bottom: 20px;
+    position: relative;
 
     input {
       padding: 10px 5px;
@@ -92,5 +93,21 @@
 
   p {
     margin-top: 20px;
+  }
+}
+.errorItem {
+  display: none;
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  color: red;
+}
+
+.serverError {
+  input {
+    border: 1px solid red;
+  }
+  .errorItem {
+    display: block;
   }
 }

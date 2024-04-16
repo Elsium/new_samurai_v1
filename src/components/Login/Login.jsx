@@ -9,16 +9,20 @@ import {Navigate} from "react-router-dom";
 
 const LoginForm = (props) => {
     return (
-        <form onSubmit={props.handleSubmit} className={style.form}>
+        <form onSubmit={props.handleSubmit} className={style.form + ' ' + (props.error && style.serverError)}>
             <div className={style.input}>
-                <Field component={FormInput} validate={[required]} placeholder={'Email'} name={'email'} autoComplete={'username'}/>
+                <Field component={FormInput} validate={[required]} placeholder={'Email'} name={'email'}
+                       autoComplete={'username'}/>
+                <p className={style.errorItem}>{props.error}</p>
             </div>
             <div className={style.input}>
-                <Field component={FormInput} validate={[required]} type={'password'} placeholder={'Password'} name={'password'} autoComplete={'current-password'}/>
+                <Field component={FormInput} validate={[required]} type={'password'} placeholder={'Password'}
+                       name={'password'} autoComplete={'current-password'}/>
             </div>
             <div className={style.checkbox}>
                 <label>
-                    <Field component={FormInput} type={'checkbox'} name={'rememberMe'} id={'rememberMe'}/> <p style={{marginLeft: '10px', userSelect: 'none'}}>RememberMe</p>
+                    <Field component={FormInput} type={'checkbox'} name={'rememberMe'} id={'rememberMe'}/> <p
+                    style={{marginLeft: '10px', userSelect: 'none'}}>RememberMe</p>
                 </label>
             </div>
             <div className={style.btn}>
@@ -35,7 +39,7 @@ const Login = (props) => {
         props.setLogin(email, password, rememberMe);
     }
 
-    if(props.isAuth) return <Navigate to={`/profile`} />
+    if (props.isAuth) return <Navigate to={`/profile`}/>
 
     return (
         <div className={style.wrapper}>
@@ -43,7 +47,9 @@ const Login = (props) => {
             <LoginReduxForm onSubmit={onSubmit}/>
             <div className={style.info}>
                 <h2>Info</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda consectetur facilis laboriosam modi vel velit voluptates voluptatum. At dicta excepturi inventore reiciendis sint. Consequuntur delectus esse iste itaque sequi?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda consectetur facilis
+                    laboriosam modi vel velit voluptates voluptatum. At dicta excepturi inventore reiciendis sint.
+                    Consequuntur delectus esse iste itaque sequi?</p>
             </div>
         </div>
     );
