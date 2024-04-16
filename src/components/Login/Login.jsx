@@ -11,10 +11,10 @@ const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={style.form}>
             <div className={style.input}>
-                <Field component={FormInput} validate={[required]} placeholder={'Email'} name={'email'}/>
+                <Field component={FormInput} validate={[required]} placeholder={'Email'} name={'email'} autoComplete={'username'}/>
             </div>
             <div className={style.input}>
-                <Field component={FormInput} validate={[required]} type={'password'} placeholder={'Password'} name={'password'}/>
+                <Field component={FormInput} validate={[required]} type={'password'} placeholder={'Password'} name={'password'} autoComplete={'current-password'}/>
             </div>
             <div className={style.checkbox}>
                 <label>
