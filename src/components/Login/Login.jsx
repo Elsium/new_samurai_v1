@@ -1,19 +1,24 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import style from './Login.module.scss';
+import {FormInput} from "../UI/FormInput/FormInput";
+import {required} from "../utils/validators/validators";
+import {connect} from "react-redux";
+import {setLogin} from "../../redux/authReducer";
+import {Navigate} from "react-router-dom";
 
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={style.form}>
             <div className={style.input}>
-                <Field component={'input'} placeholder={'Login'} name={'login'}/>
+                <Field component={FormInput} validate={[required]} placeholder={'Email'} name={'email'}/>
             </div>
             <div className={style.input}>
-                <Field component={'input'} placeholder={'Password'} name={'password'}/>
+                <Field component={FormInput} validate={[required]} type={'password'} placeholder={'Password'} name={'password'}/>
             </div>
             <div className={style.checkbox}>
                 <label>
-                    <Field component={'input'} type={'checkbox'} name={'rememberMe'} id={'rememberMe'}/> <p style={{marginLeft: '10px', userSelect: 'none'}}>RememberMe</p>
+                    <Field component={FormInput} type={'checkbox'} name={'rememberMe'} id={'rememberMe'}/> <p style={{marginLeft: '10px', userSelect: 'none'}}>RememberMe</p>
                 </label>
             </div>
             <div className={style.btn}>
@@ -25,10 +30,12 @@ const LoginForm = (props) => {
 
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
-const Login = () => {
-    const onSubmit = (formData) => {
-        console.log(formData)
+const Login = (props) => {
+    const onSubmit = ({email, password, rememberMe}) => {
+        props.setLogin(email, password, rememberMe);
     }
+
+    if(props.isAuth) return <Navigate to={`/profile`} />
 
     return (
         <div className={style.wrapper}>
@@ -42,4 +49,8 @@ const Login = () => {
     );
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
+})
+
+export default connect(mapStateToProps, {setLogin})(Login);

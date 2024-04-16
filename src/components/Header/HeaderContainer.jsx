@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import {getUserAuth} from '../../redux/authReducer';
+import {getUserAuth, setLogout} from '../../redux/authReducer';
 import Header from './Header';
 import {compose} from "redux";
 import withRouter from "../HOC/withRouter";
@@ -24,5 +24,5 @@ const mapStateToProps = (state) => ({
 })
 
 export default compose(
-    connect(mapStateToProps, {getUserAuth})
+    connect(mapStateToProps, {getUserAuth, setLogout})
 )(HeaderContainer)
