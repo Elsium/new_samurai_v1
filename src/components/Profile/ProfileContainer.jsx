@@ -11,8 +11,11 @@ import withRouter from "../HOC/withRouter";
 class ProfileContainer extends React.Component {
     componentDidMount() {
         const id = this.props.params.userID ? this.props.params.userID : this.props.userID;
-        this.props.getProfile(id);
-        this.props.getStatus(id);
+        if (!id) this.props.history('/login')
+        else {
+            this.props.getProfile(id);
+            this.props.getStatus(id);
+        }
     }
 
     render() {

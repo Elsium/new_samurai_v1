@@ -26,9 +26,9 @@ const mapStateToProps = (state) => ({
     pageSize: state.usersPage.pageSize,
     isFetching: state.usersPage.isFetching,
     isFollowing: state.usersPage.isFollowing,
+    isAuth: state.auth.isAuth
 })
 
 export default compose(
-    WithAuth,
     connect(mapStateToProps, {follow, unfollow, getUsers})
 )(UsersContainer)

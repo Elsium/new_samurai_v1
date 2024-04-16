@@ -33,7 +33,7 @@ const _setUserAuthSuccess = (id, login, email, isAuth) => ({type: SET_USER_DATA,
 const _setMyPhoto = (photo) => ({type: SET_MY_PHOTO, photo})
 
 export const getUserAuth = () => (dispatch) => {
-    authAPI.authMe()
+    return authAPI.authMe()
         .then(response => {
             if(response.data.resultCode === 0) {
                 const {id, login, email} = response.data.data;

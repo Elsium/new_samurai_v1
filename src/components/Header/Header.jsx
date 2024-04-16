@@ -16,7 +16,7 @@ const Header = (props) => {
             <div className={style.profile + ' ' + (props.isAuth && style.active)}>
                 {props.isAuth
                     ? <div>
-                        <NavLink to={`/profile/${props.id}`}>
+                        <NavLink to={`/profile`}>
                             <img
                                 src={props.userProfile ? props.userProfile.photos.small : user}
                                 alt=''/>

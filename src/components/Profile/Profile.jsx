@@ -7,8 +7,8 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 const Profile = (props) => {
     return (
         <section>
-            <Home {...props}/>
-            <Actions status={props.status} updateStatus={props.updateStatus}/>
+            <Home profile={props.profile} userID={props.userID}/>
+            <Actions canStatusChange={props.userID === props.profile.userId} status={props.status} updateStatus={props.updateStatus}/>
             <MyPostsContainer/>
         </section>
     );

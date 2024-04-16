@@ -8,9 +8,11 @@ class Status extends React.Component {
     }
 
     activateEditMode = () => {
-        this.setState({
-            editMode: true,
-        });
+        if (this.props.canStatusChange) {
+            this.setState({
+                editMode: true,
+            });
+        }
     }
     deactivateEditMode = () => {
         this.setState({
