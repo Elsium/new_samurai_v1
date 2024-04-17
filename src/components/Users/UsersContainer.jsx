@@ -27,15 +27,17 @@ class UsersContainer extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    users: getUsers(state),
-    currentPage: getCurrentPage(state),
-    totalUsersCount: getTotalUsersCount(state),
-    pageSize: getPageSize(state),
-    isFetching: getIsFetching(state),
-    isFollowing: getIsFollowing(state),
-    isAuth: getAuth(state),
-})
+const mapStateToProps = (state) => {
+    return {
+        users: getUsers(state),
+        currentPage: getCurrentPage(state),
+        totalUsersCount: getTotalUsersCount(state),
+        pageSize: getPageSize(state),
+        isFetching: getIsFetching(state),
+        isFollowing: getIsFollowing(state),
+        isAuth: getAuth(state),
+    }
+}
 
 export default compose(
     connect(mapStateToProps, {sendFollow, sendUnfollow, requestUsers})

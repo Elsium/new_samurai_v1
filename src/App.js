@@ -14,6 +14,8 @@ import Music from './components/Music/Music';
 import Login from "./components/Login/Login";
 import Loader from "./components/UI/Loader/Loader";
 
+
+
 class App extends React.Component {
     componentDidMount() {
         this.props.initializeApp();
