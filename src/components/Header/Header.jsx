@@ -1,9 +1,9 @@
 import React from 'react';
 import logo from '../../img/logo.png';
-import style from './Header.module.scss'
+import style from './Header.module.scss';
 import {NavLink} from 'react-router-dom';
 import LoginButton from '../UI/LoginBtn/LoginBtn';
-import user from '../../assets/img/user.jpg'
+import user from '../../assets/img/user.jpg';
 
 const Header = (props) => {
     return (
@@ -23,7 +23,7 @@ const Header = (props) => {
                             <p>{props.login}</p>
                         </NavLink>
                         <div className={style.logout}>
-                            <button onClick={props.setLogout}>Logout</button>
+                            <button onClick={props.sendLogout}>Logout</button>
                         </div>
                     </div>
                     : <LoginButton/>

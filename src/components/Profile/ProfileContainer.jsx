@@ -1,11 +1,13 @@
 import React from 'react';
 import {compose} from "redux";
 import {connect} from 'react-redux';
-import {getProfile, getStatus, updateStatus} from '../../redux/profileReducer';
-import {follow, unfollow} from "../../redux/usersReducer";
+import {requestProfile, requestStatus, sendUpdateStatus} from '../../redux/profileReducer';
+import {sendFollow, sendUnfollow} from "../../redux/usersReducer";
 import Profile from './Profile';
 import Loader from '../UI/Loader/Loader';
 import withRouter from "../HOC/withRouter";
+import {getAuthId} from "../../redux/authSelectors";
+import {getProfile, getProfileStatus} from "../../redux/profileSelectors";
 
 
 class ProfileContainer extends React.Component {
@@ -13,8 +15,8 @@ class ProfileContainer extends React.Component {
         const id = this.props.params.userID ? this.props.params.userID : this.props.userID;
         if (!id) this.props.history('/login')
         else {
-            this.props.getProfile(id);
-            this.props.getStatus(id);
+            this.props.requestProfile(id);
+            this.props.requestStatus(id);
         }
     }
 
@@ -27,13 +29,13 @@ class ProfileContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    profile: state.profileData.profile,
-    userID: state.auth.id,
-    status: state.profileData.status,
+    profile: getProfile(state),
+    userID: getAuthId(state),
+    status: getProfileStatus(state),
 })
 
 
 export default compose(
     withRouter,
-    connect(mapStateToProps, {getProfile, getStatus, follow, unfollow, updateStatus})
+    connect(mapStateToProps, {requestProfile, requestStatus, sendFollow, sendUnfollow, sendUpdateStatus})
 )(ProfileContainer);

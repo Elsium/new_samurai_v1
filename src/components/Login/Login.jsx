@@ -4,8 +4,9 @@ import style from './Login.module.scss';
 import {FormInput} from "../UI/FormInput/FormInput";
 import {required} from "../utils/validators/validators";
 import {connect} from "react-redux";
-import {setLogin} from "../../redux/authReducer";
+import {sendLogin} from "../../redux/authReducer";
 import {Navigate} from "react-router-dom";
+import {getAuth} from "../../redux/authSelectors";
 
 const LoginForm = (props) => {
     return (
@@ -36,7 +37,7 @@ const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
 const Login = (props) => {
     const onSubmit = ({email, password, rememberMe}) => {
-        props.setLogin(email, password, rememberMe);
+        props.sendLogin(email, password, rememberMe);
     }
 
     if (props.isAuth) return <Navigate to={`/profile`}/>
@@ -56,7 +57,7 @@ const Login = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
+    isAuth: getAuth(state)
 })
 
-export default connect(mapStateToProps, {setLogin})(Login);
+export default connect(mapStateToProps, {sendLogin})(Login);

@@ -32,7 +32,7 @@ const authReducer = (state = initialState, action) => {
 const _setUserAuthSuccess = (id, login, email, isAuth) => ({type: SET_USER_DATA, payload: {id, login, email, isAuth}})
 const _setMyPhoto = (photo) => ({type: SET_MY_PHOTO, photo})
 
-export const getUserAuth = () => (dispatch) => {
+export const requestUserAuth = () => (dispatch) => {
     return authAPI.authMe()
         .then(response => {
             if(response.data.resultCode === 0) {
@@ -45,16 +45,16 @@ export const getUserAuth = () => (dispatch) => {
             }
         })
 }
-export const setLogin = (email, password, rememberMe) => (dispatch) => {
+export const sendLogin = (email, password, rememberMe) => (dispatch) => {
     authAPI.login(email, password, rememberMe)
         .then(response => {
-            if(response.data.resultCode === 0) dispatch(getUserAuth());
+            if(response.data.resultCode === 0) dispatch(requestUserAuth());
             else {
                 dispatch(stopSubmit('login', {_error: response.data.messages[0]}))
             }
         })
 }
-export const setLogout = () => (dispatch) => {
+export const sendLogout = () => (dispatch) => {
     authAPI.logout()
         .then(response => {
             if(response.data.resultCode === 0) {

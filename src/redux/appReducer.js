@@ -1,4 +1,4 @@
-import {getUserAuth} from "./authReducer";
+import {requestUserAuth} from "./authReducer";
 
 const INITIALIZE_SUCCESS = 'INITIALIZE_SUCCESS'
 
@@ -21,7 +21,7 @@ const appReducer = (state = initialState, action) => {
 const _initializeSuccess = () => ({type: INITIALIZE_SUCCESS})
 
 export const initializeApp = () => (dispatch) => {
-    Promise.all([dispatch(getUserAuth())])
+    Promise.all([dispatch(requestUserAuth())])
         .then( () => {
             dispatch(_initializeSuccess());
         })

@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {setLogout} from '../../redux/authReducer';
+import {sendLogout} from '../../redux/authReducer';
 import Header from './Header';
 import {compose} from "redux";
+import {getAuth, getAuthId, getAuthLogin, getAuthUserProfile} from "../../redux/authSelectors";
 
 const HeaderContainer = (props) => {
     return (
@@ -11,12 +12,12 @@ const HeaderContainer = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth,
-    login: state.auth.login,
-    id: state.auth.id,
-    userProfile: state.auth.userProfile
+    isAuth: getAuth(state),
+    login: getAuthLogin(state),
+    id: getAuthId(state),
+    userProfile: getAuthUserProfile(state),
 })
 
 export default compose(
-    connect(mapStateToProps, {setLogout})
+    connect(mapStateToProps, {sendLogout})
 )(HeaderContainer)

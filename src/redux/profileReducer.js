@@ -71,19 +71,19 @@ export const createPost = (post) => ({type: CREATE_POST, post})
 const _setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 const _setUserStatus = (status) => ({type: SET_STATUS, status})
 
-export const getProfile = (id) => (dispatch) => {
+export const requestProfile = (id) => (dispatch) => {
     profileAPI.getProfile(id)
         .then(response => {
             dispatch(_setUserProfile(response.data));
         })
 }
-export const getStatus = (id) => (dispatch) => {
+export const requestStatus = (id) => (dispatch) => {
     profileAPI.getStatus(id)
         .then(response => {
             dispatch(_setUserStatus(response.data));
         })
 }
-export const updateStatus = (status) => (dispatch) => {
+export const sendUpdateStatus = (status) => (dispatch) => {
     profileAPI.updateStatus(status)
         .then(response => {
             !response.resultCode && dispatch(_setUserStatus(status));

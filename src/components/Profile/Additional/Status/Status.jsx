@@ -18,7 +18,7 @@ class Status extends React.Component {
         this.setState({
             editMode: false,
         });
-        this.props.updateStatus(this.state.status);
+        this.props.sendUpdateStatus(this.state.status);
     }
 
     onUpdateStatus = (e) => {

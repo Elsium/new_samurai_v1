@@ -8,7 +8,7 @@ const Profile = (props) => {
     return (
         <section>
             <Home profile={props.profile} userID={props.userID}/>
-            <Actions canStatusChange={props.userID === props.profile.userId} status={props.status} updateStatus={props.updateStatus}/>
+            <Actions canStatusChange={props.userID === props.profile.userId} status={props.status} sendUpdateStatus={props.sendUpdateStatus}/>
             <MyPostsContainer/>
         </section>
     );

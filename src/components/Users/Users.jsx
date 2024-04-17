@@ -45,10 +45,10 @@ const Users = (props) => {
                         <div className={style.subBtn}>
                             {u.followed
                                 ? <button disabled={!props.isAuth || props.isFollowing.some(id => id === u.id)} onClick={() => {
-                                    props.unfollow(u.id)
+                                    props.sendUnfollow(u.id)
                                 }}>Unfollow</button>
                                 : <button disabled={!props.isAuth || props.isFollowing.some(id => id === u.id)} onClick={() => {
-                                    props.follow(u.id)
+                                    props.sendFollow(u.id)
                                 }}>Follow</button>
                             }
                         </div>
