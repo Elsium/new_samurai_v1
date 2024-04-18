@@ -1,7 +1,7 @@
 import React from 'react';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import {compose} from "redux";
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {initializeApp} from "./redux/appReducer";
 import style from './App.module.scss';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
@@ -13,6 +13,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Login from "./components/Login/Login";
 import Loader from "./components/UI/Loader/Loader";
+import store from "./redux/reduxStore";
 
 class App extends React.Component {
     componentDidMount() {
@@ -46,6 +47,18 @@ const mapStateToProps = (state) => ({
     initialize: state.app.initialize,
 })
 
-export default compose(
+const AppContainer = compose(
     connect(mapStateToProps, {initializeApp})
-)(App);
+)(App)
+
+const SamuraiApp = (props) => {
+    return (
+        <BrowserRouter>
+            <Provider store={store}>
+                <AppContainer/>
+            </Provider>
+        </BrowserRouter>
+    )
+}
+
+export default SamuraiApp;
