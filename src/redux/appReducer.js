@@ -1,6 +1,6 @@
 import {requestUserAuth} from "./authReducer";
 
-const INITIALIZE_SUCCESS = 'INITIALIZE_SUCCESS'
+const INITIALIZE_SUCCESS = 'samurai/app/INITIALIZE_SUCCESS'
 
 let initialState = {
     initialize: false,
@@ -20,11 +20,8 @@ const appReducer = (state = initialState, action) => {
 
 const _initializeSuccess = () => ({type: INITIALIZE_SUCCESS})
 
-export const initializeApp = () => (dispatch) => {
-    Promise.all([dispatch(requestUserAuth())])
-        .then( () => {
-            dispatch(_initializeSuccess());
-        })
-
+export const initializeApp = () => async (dispatch) => {
+    await Promise.all([dispatch(requestUserAuth())]);
+    dispatch(_initializeSuccess());
 }
 export default appReducer;

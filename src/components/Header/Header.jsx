@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom';
 import LoginButton from '../UI/LoginBtn/LoginBtn';
 import user from '../../assets/img/user.jpg';
 
-const Header = (props) => {
+const Header = ({isAuth, userProfile, login, sendLogout}) => {
     return (
         <header className={style.header}>
             <div className={style.logo}>
@@ -13,17 +13,17 @@ const Header = (props) => {
                     <img src={logo} alt='logo'/>
                 </NavLink>
             </div>
-            <div className={style.profile + ' ' + (props.isAuth && style.active)}>
-                {props.isAuth
+            <div className={style.profile + ' ' + (isAuth && style.active)}>
+                {isAuth
                     ? <div>
                         <NavLink to={`/profile`}>
                             <img
-                                src={props.userProfile ? props.userProfile.photos.small : user}
+                                src={userProfile ?userProfile.photos.small : user}
                                 alt=''/>
-                            <p>{props.login}</p>
+                            <p>{login}</p>
                         </NavLink>
                         <div className={style.logout}>
-                            <button onClick={props.sendLogout}>Logout</button>
+                            <button onClick={sendLogout}>Logout</button>
                         </div>
                     </div>
                     : <LoginButton/>

@@ -2,19 +2,19 @@ import React from 'react';
 import style from './Home.module.scss'
 import user from '../../../assets/img/user.jpg'
 
-const Home = (props) => {
+const Home = ({profile, userID}) => {
     return (
         <section>
             <div className={style.banner}></div>
             <div className={style.content}>
                 <img
-                    src={props.profile.photos.large || user}
+                    src={profile.photos.large || user}
                     alt=''/>
                 <div className={style.name}>
-                    {props.profile.fullName}
+                    {profile.fullName}
                 </div>
                 <div className={style.add}>
-                    { props.userID === props.profile.userId
+                    { userID === profile.userId
                         ? <div>edit</div>
                         : <div>
                             {/*{followed*/}

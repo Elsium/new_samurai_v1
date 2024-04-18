@@ -3,11 +3,11 @@ import Home from './Home/Home';
 import Actions from './Additional/Additional';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 
-const Profile = (props) => {
+const Profile = ({profile, userID, status, sendUpdateStatus}) => {
     return (
         <section>
-            <Home profile={props.profile} userID={props.userID}/>
-            <Actions canStatusChange={props.userID === props.profile.userId} status={props.status} sendUpdateStatus={props.sendUpdateStatus}/>
+            <Home profile={profile} userID={userID}/>
+            <Actions canStatusChange={userID === profile.userId} status={status} sendUpdateStatus={sendUpdateStatus}/>
             <MyPostsContainer/>
         </section>
     );

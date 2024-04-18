@@ -9,7 +9,6 @@ import withRouter from "../HOC/withRouter";
 import {getAuthId} from "../../redux/authSelectors";
 import {getProfile, getProfileStatus} from "../../redux/profileSelectors";
 
-
 class ProfileContainer extends React.Component {
     componentDidMount() {
         const id = this.props.params.userID ? this.props.params.userID : this.props.userID;
@@ -33,7 +32,6 @@ const mapStateToProps = (state) => ({
     userID: getAuthId(state),
     status: getProfileStatus(state),
 })
-
 
 export default compose(
     withRouter,

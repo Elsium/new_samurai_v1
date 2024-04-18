@@ -1,9 +1,9 @@
 import {profileAPI} from '../api/api';
 
-const CREATE_POST = 'CREATE_POST'
-const SET_USER_PROFILE = 'SET_USER_PROFILE'
-const SET_STATUS = 'SET_STATUS'
-const DELETE_POST = 'DELETE_POST'
+const CREATE_POST = 'samurai/profile/CREATE_POST'
+const SET_USER_PROFILE = 'samurai/profile/SET_USER_PROFILE'
+const SET_STATUS = 'samurai/profile/SET_STATUS'
+const DELETE_POST = 'samurai/profile/DELETE_POST'
 
 let initialState = {
     posts: [
@@ -78,23 +78,17 @@ export const deletePost = (postId) => ({type: DELETE_POST, postId})
 const _setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 const _setUserStatus = (status) => ({type: SET_STATUS, status})
 
-export const requestProfile = (id) => (dispatch) => {
-    profileAPI.getProfile(id)
-        .then(response => {
-            dispatch(_setUserProfile(response.data));
-        })
+export const requestProfile = (id) => async (dispatch) => {
+    const response = await profileAPI.getProfile(id);
+    dispatch(_setUserProfile(response.data));
 }
-export const requestStatus = (id) => (dispatch) => {
-    profileAPI.getStatus(id)
-        .then(response => {
-            dispatch(_setUserStatus(response.data));
-        })
+export const requestStatus = (id) => async (dispatch) => {
+    const response = await profileAPI.getStatus(id);
+    dispatch(_setUserStatus(response.data));
 }
-export const sendUpdateStatus = (status) => (dispatch) => {
-    profileAPI.updateStatus(status)
-        .then(response => {
-            !response.resultCode && dispatch(_setUserStatus(status));
-        })
+export const sendUpdateStatus = (status) => async (dispatch) => {
+    const response = await profileAPI.updateStatus(status);
+    !response.resultCode && dispatch(_setUserStatus(status));
 }
 
 export default profileReducer;

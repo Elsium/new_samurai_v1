@@ -8,13 +8,13 @@ import {sendLogin} from "../../redux/authReducer";
 import {Navigate} from "react-router-dom";
 import {getAuth} from "../../redux/authSelectors";
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error}) => {
     return (
-        <form onSubmit={props.handleSubmit} className={style.form + ' ' + (props.error && style.serverError)}>
+        <form onSubmit={handleSubmit} className={style.form + ' ' + (error && style.serverError)}>
             <div className={style.input}>
                 <Field component={FormInput} validate={[required]} placeholder={'Email'} name={'email'}
                        autoComplete={'username'}/>
-                <p className={style.errorItem}>{props.error}</p>
+                <p className={style.errorItem}>{error}</p>
             </div>
             <div className={style.input}>
                 <Field component={FormInput} validate={[required]} type={'password'} placeholder={'Password'}
@@ -35,12 +35,12 @@ const LoginForm = (props) => {
 
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
-const Login = (props) => {
+const Login = ({sendLogin, isAuth}) => {
     const onSubmit = ({email, password, rememberMe}) => {
-        props.sendLogin(email, password, rememberMe);
+        sendLogin(email, password, rememberMe);
     }
 
-    if (props.isAuth) return <Navigate to={`/profile`}/>
+    if (isAuth) return <Navigate to={`/profile`}/>
 
     return (
         <div className={style.wrapper}>

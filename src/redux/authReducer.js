@@ -1,8 +1,8 @@
 import {authAPI, profileAPI} from '../api/api';
 import {stopSubmit} from "redux-form";
 
-const SET_USER_DATA = 'SET_USER_DATA'
-const SET_MY_PHOTO = 'SET_MY_PHOTO'
+const SET_USER_DATA = 'samurai/auth/SET_USER_DATA'
+const SET_MY_PHOTO = 'samurai/auth/SET_MY_PHOTO'
 
 let initialState = {
     id: null,
@@ -32,36 +32,28 @@ const authReducer = (state = initialState, action) => {
 const _setUserAuthSuccess = (id, login, email, isAuth) => ({type: SET_USER_DATA, payload: {id, login, email, isAuth}})
 const _setMyPhoto = (photo) => ({type: SET_MY_PHOTO, photo})
 
-export const requestUserAuth = () => (dispatch) => {
-    return authAPI.authMe()
-        .then(response => {
-            if(response.data.resultCode === 0) {
-                const {id, login, email} = response.data.data;
-                profileAPI.getProfile(id)
-                    .then(res => {
-                        dispatch(_setMyPhoto(res.data.photos.small))
-                    })
-                dispatch(_setUserAuthSuccess(id, login, email, true));
-            }
-        })
+export const requestUserAuth = () => async (dispatch) => {
+    const response = await authAPI.authMe();
+    if (response.data.resultCode === 0) {
+        const {id, login, email} = response.data.data;
+        const response2 = await profileAPI.getProfile(id)
+        dispatch(_setMyPhoto(response2.data.photos.small))
+        dispatch(_setUserAuthSuccess(id, login, email, true));
+    }
 }
-export const sendLogin = (email, password, rememberMe) => (dispatch) => {
-    authAPI.login(email, password, rememberMe)
-        .then(response => {
-            if(response.data.resultCode === 0) dispatch(requestUserAuth());
-            else {
-                dispatch(stopSubmit('login', {_error: response.data.messages[0]}))
-            }
-        })
+export const sendLogin = (email, password, rememberMe) => async (dispatch) => {
+    const response = await authAPI.login(email, password, rememberMe)
+    if (response.data.resultCode === 0) dispatch(requestUserAuth());
+    else {
+        dispatch(stopSubmit('login', {_error: response.data.messages[0]}))
+    }
 }
-export const sendLogout = () => (dispatch) => {
-    authAPI.logout()
-        .then(response => {
-            if(response.data.resultCode === 0) {
-                dispatch(_setUserAuthSuccess(null, null, null, false));
-                dispatch(_setMyPhoto(null));
-            }
-        })
+export const sendLogout = () => async (dispatch) => {
+    const response = await authAPI.logout();
+    if (response.data.resultCode === 0) {
+        dispatch(_setUserAuthSuccess(null, null, null, false));
+        dispatch(_setMyPhoto(null));
+    }
 }
 
 export default authReducer;

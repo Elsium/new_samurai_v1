@@ -4,14 +4,14 @@ import Message from './Message/Message';
 import Dialog from './Dialog/Dialog';
 import SendMsgFormRedux from './SendMsg/SendMsg';
 
-const Dialogs = (props) => {
+const Dialogs = ({dialogsData, sendMsg}) => {
 
-    let dialogs = props.dialogsData.dialogs
+    let dialogs = dialogsData.dialogs
         .map(item => <Dialog key={item.userID}
                              name={item.name}
                              userID={item.userID}/>)
 
-    let msg = props.dialogsData.msg
+    let msg = dialogsData.msg
         .map(item => <Message key={item.msgID}
                               msgID={item.msgID}
                               userID={item.userID}
@@ -20,7 +20,7 @@ const Dialogs = (props) => {
                               time={item.time}/>)
 
     const addNewMsg = (values) => {
-        props.sendMsg(values.currentText)
+        sendMsg(values.currentText)
     }
 
     return (

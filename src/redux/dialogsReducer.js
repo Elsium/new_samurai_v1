@@ -1,4 +1,4 @@
-const SEND_MSG = 'SEND_MSG'
+const SEND_MSG = 'samurai/dialogs/SEND_MSG'
 
 let initialState = {
     msg: [
