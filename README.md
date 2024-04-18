@@ -22,4 +22,4 @@
 20. **15.04.2024** - reached the 75th lesson
 21. **16.04.2024** - reached the 80th lesson
 22. **17.04.2024** - reached the 87th lesson
-23. **18.04.2024** - reached the 
+23. **18.04.2024** - reached the 94th lesson
