@@ -27,12 +27,10 @@ const StatusHooks = (props) => {
         <div className={style.wrapper}>
             {editMode
                 ? <div className={style.changed}>
-                    <div>Status:</div>
                     <input onChange={onUpdateStatus} onBlur={deactivateEditMode} autoFocus={true} value={status}
                            type="text"/>
                 </div>
                 : <div className={style.noChanged}>
-                    <div>Status:</div>
                     <span onDoubleClick={activateEditMode}
                           className={status ? "" : style.nostatus}>{status || "No status yet."}</span>
                 </div>

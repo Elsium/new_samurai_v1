@@ -1,11 +1,13 @@
 import React from 'react';
 import style from './Additional.module.scss'
-import StatusHooks from "./Status/StatusHooks";
 
-const Additional = ({canStatusChange, status, sendUpdateStatus}) => {
+const Additional = ({profile}) => {
+    console.log(profile)
     return (
         <section className={style.wrapper}>
-            <StatusHooks canStatusChange={canStatusChange} status={status} sendUpdateStatus={sendUpdateStatus}/>
+            <div>
+                <p>about me</p>
+            </div>
             <div>
                 <p>job</p>
                 <p>info</p>
