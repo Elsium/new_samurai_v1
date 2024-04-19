@@ -1,7 +1,7 @@
 import React from 'react';
 import {compose} from "redux";
 import {connect} from 'react-redux';
-import {requestProfile, requestStatus, savePhoto, sendUpdateStatus} from '../../redux/profileReducer';
+import {requestProfile, requestStatus, savePhoto, saveProfile, sendUpdateStatus} from '../../redux/profileReducer';
 import {sendFollow, sendUnfollow} from "../../redux/usersReducer";
 import Profile from './Profile';
 import Loader from '../UI/Loader/Loader';
@@ -43,5 +43,5 @@ const mapStateToProps = (state) => ({
 
 export default compose(
     withRouter,
-    connect(mapStateToProps, {requestProfile, requestStatus, sendFollow, sendUnfollow, sendUpdateStatus, savePhoto})
+    connect(mapStateToProps, {requestProfile, requestStatus, sendFollow, sendUnfollow, sendUpdateStatus, savePhoto, saveProfile})
 )(ProfileContainer);

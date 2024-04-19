@@ -5,7 +5,7 @@ const CREATE_POST = 'samurai/profile/CREATE_POST'
 const SET_USER_PROFILE = 'samurai/profile/SET_USER_PROFILE'
 const SET_STATUS = 'samurai/profile/SET_STATUS'
 const DELETE_POST = 'samurai/profile/DELETE_POST'
-const SET_PHOTO = 'SET_PHOTO'
+const SET_PHOTO = 'samurai/profile/SET_PHOTO'
 
 let initialState = {
     posts: [
@@ -103,8 +103,13 @@ export const savePhoto = (photo) => async (dispatch) => {
     const response = await profileAPI.savePhoto(photo);
     if(!response.data.resultCode) {
         dispatch(_savePhotoSuccess(response.data.data.photos));
-        dispatch(_setMyPhoto(response.data.data.photos.small))
+        dispatch(_setMyPhoto(response.data.data.photos.small));
     }
+}
+
+export const saveProfile = (profile) => async (dispatch, getState) => {
+    const response = await profileAPI.saveProfile(profile);
+    !response.data.resultCode && dispatch(requestProfile(getState().auth.id));
 }
 
 export default profileReducer;

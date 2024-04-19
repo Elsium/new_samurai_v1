@@ -4,7 +4,7 @@ import StatusHooks from "./Status/StatusHooks";
 import ProfilePhoto from "./ProfilePhoto/ProfilePhoto";
 import ThirdFunction from "./ThirdFunction/ThirdFunction";
 
-const Home = ({profile, userID, isOwner, savePhoto, canStatusChange, status, sendUpdateStatus}) => {
+const Home = ({profile, userID, isOwner, savePhoto, canStatusChange, status, sendUpdateStatus, toggleEditMode, editMode}) => {
     return (
         <section>
             <div className={style.banner}></div>
@@ -14,7 +14,7 @@ const Home = ({profile, userID, isOwner, savePhoto, canStatusChange, status, sen
                     <p>{profile.fullName}</p>
                     <StatusHooks canStatusChange={canStatusChange} status={status} sendUpdateStatus={sendUpdateStatus}/>
                 </div>
-                <ThirdFunction profile={profile} userID={userID}/>
+                <ThirdFunction editMode={editMode} toggleEditMode={toggleEditMode} profile={profile} userID={userID}/>
             </div>
         </section>
     );

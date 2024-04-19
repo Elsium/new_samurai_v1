@@ -1,14 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Home from './Home/Home';
-import Actions from './Additional/Additional';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import ProfileInfoReduxForm from "./ProfileInfoForm/ProfileInfoForm";
 
-const Profile = ({profile, userID, status, sendUpdateStatus, isOwner, savePhoto}) => {
+const Profile = ({profile, userID, status, sendUpdateStatus, isOwner, savePhoto, saveProfile}) => {
+    const [editMode, setEditMode] = useState(false);
+
+    const onSubmit = (formData) => {
+        saveProfile(formData);
+        setEditMode(false);
+    }
+
     return (
         <section>
-            <Home profile={profile} userID={userID} isOwner={isOwner} savePhoto={savePhoto}
+            <Home toggleEditMode={() => {setEditMode(!editMode)}} editMode={editMode} profile={profile} userID={userID} isOwner={isOwner} savePhoto={savePhoto}
                   canStatusChange={userID === profile.userId} status={status} sendUpdateStatus={sendUpdateStatus}/>
-            <Actions profile={profile}/>
+            {
+                editMode
+                    ? <ProfileInfoReduxForm initialValues={profile} onSubmit={onSubmit} contacts={profile.contacts}/>
+                    : <ProfileInfo profile={profile}/>
+            }
             <MyPostsContainer/>
         </section>
     );

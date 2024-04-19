@@ -1,0 +1,61 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 0 50px;
+  border-radius: 20px;
+  height: 120px;
+  background: rgb(245, 245, 245);
+}
+
+.line {
+  border-right: 1px solid #bebebe;
+  height: 70px;
+}
+
+.aboutMe {
+  padding: 0 40px;
+  flex-grow: 1;
+  p:first-child {
+    font-weight: 700;
+    font-size: 16px;
+  }
+  p:nth-child(2) {
+    margin-top: 5px;
+    font-style: italic;
+  }
+}
+
+.job {
+  padding: 0 40px;
+  flex-grow: 1;
+  p:first-child {
+    font-weight: 700;
+    font-size: 16px;
+    span {
+      font-weight: 500;
+      font-size: 14px;
+      text-decoration: underline;
+      font-style: italic;
+    }
+  }
+  p:nth-child(2) {
+    font-weight: 700;
+    font-size: 16px;
+    span {
+      font-weight: 500;
+      font-size: 14px;
+      font-style: italic;
+    }
+  }
+}
+
+.social {
+  padding: 0 40px;
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 10px;
+}

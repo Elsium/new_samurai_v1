@@ -1,11 +1,13 @@
 import React from 'react';
 import style from './ThirdFunction.module.scss'
 
-const ThirdFunction = ({profile, userID}) => {
+const ThirdFunction = ({profile, userID, toggleEditMode,editMode}) => {
     return (
         <div className={style.add}>
             {userID === profile.userId
-                ? <div>edit</div>
+                ? editMode
+                    ? <button onClick={toggleEditMode}>Cancel</button>
+                    : <button onClick={toggleEditMode}>Edit</button>
                 : <div>
                     {/*{followed*/}
                     {/*    ? <button disabled={props.isFollowing.some(id => id === u.id)} onClick={() => {*/}
