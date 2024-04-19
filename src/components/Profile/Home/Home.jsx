@@ -1,15 +1,26 @@
 import React from 'react';
 import style from './Home.module.scss'
 import user from '../../../assets/img/user.jpg'
+import edit from '../../../assets/img/edit.png'
 
-const Home = ({profile, userID}) => {
+const Home = ({profile, userID, isOwner, savePhoto}) => {
+    const onMainPhotoSelected = (e) => {
+        if(e.target.files.length) savePhoto(e.target.files[0])
+    }
+
     return (
         <section>
             <div className={style.banner}></div>
             <div className={style.content}>
-                <img
-                    src={profile.photos.large || user}
-                    alt=''/>
+                <div className={style.photo}>
+                    <img
+                        src={profile.photos.large || user}
+                        alt=''/>
+                    {isOwner && <label>
+                        <input type={'file'} accept="image/png, image/jpeg" className={style.input} onChange={onMainPhotoSelected}/>
+                        <img src={edit} alt="Edit" className={style.edit}/>
+                    </label>}
+                </div>
                 <div className={style.name}>
                     {profile.fullName}
                 </div>

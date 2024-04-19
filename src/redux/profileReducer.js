@@ -1,9 +1,11 @@
 import {profileAPI} from '../api/api';
+import {_setMyPhoto} from "./authReducer";
 
 const CREATE_POST = 'samurai/profile/CREATE_POST'
 const SET_USER_PROFILE = 'samurai/profile/SET_USER_PROFILE'
 const SET_STATUS = 'samurai/profile/SET_STATUS'
 const DELETE_POST = 'samurai/profile/DELETE_POST'
+const SET_PHOTO = 'SET_PHOTO'
 
 let initialState = {
     posts: [
@@ -67,7 +69,12 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 posts: state.posts.filter(post => post.postID !== action.postId)
-            }
+            };
+        case SET_PHOTO:
+            return {
+                ...state,
+                profile: {...state.profile, photos: action.photos}
+            };
         default:
             return state;
     }
@@ -77,6 +84,7 @@ export const createPost = (post) => ({type: CREATE_POST, post})
 export const deletePost = (postId) => ({type: DELETE_POST, postId})
 const _setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 const _setUserStatus = (status) => ({type: SET_STATUS, status})
+const _savePhotoSuccess = (photos) => ({type: SET_PHOTO, photos})
 
 export const requestProfile = (id) => async (dispatch) => {
     const response = await profileAPI.getProfile(id);
@@ -89,6 +97,14 @@ export const requestStatus = (id) => async (dispatch) => {
 export const sendUpdateStatus = (status) => async (dispatch) => {
     const response = await profileAPI.updateStatus(status);
     !response.resultCode && dispatch(_setUserStatus(status));
+}
+
+export const savePhoto = (photo) => async (dispatch) => {
+    const response = await profileAPI.savePhoto(photo);
+    if(!response.data.resultCode) {
+        dispatch(_savePhotoSuccess(response.data.data.photos));
+        dispatch(_setMyPhoto(response.data.data.photos.small))
+    }
 }
 
 export default profileReducer;

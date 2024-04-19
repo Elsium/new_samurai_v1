@@ -64,8 +64,13 @@
         text-align: center;
         background: inherit;
       }
+
       &:hover {
         background: rgb(235, 235, 235);
+      }
+
+      &:active {
+        background: rgb(215, 215, 215);
       }
     }
   }

@@ -22,7 +22,7 @@ const authReducer = (state = initialState, action) => {
         case SET_MY_PHOTO:
             return {
                 ...state,
-                userPhoto: {...action.photo}
+                userPhoto: action.photo
             }
         default:
             return state;
@@ -30,7 +30,7 @@ const authReducer = (state = initialState, action) => {
 }
 
 const _setUserAuthSuccess = (id, login, email, isAuth) => ({type: SET_USER_DATA, payload: {id, login, email, isAuth}})
-const _setMyPhoto = (photo) => ({type: SET_MY_PHOTO, photo})
+export const _setMyPhoto = (photo) => ({type: SET_MY_PHOTO, photo})
 
 export const requestUserAuth = () => async (dispatch) => {
     const response = await authAPI.authMe();

@@ -10,6 +10,6 @@ export const getAuthLogin = (state) => {
     return state.auth.login;
 }
 
-export const getAuthUserProfile = (state) => {
-    return state.auth.userProfile;
+export const getAuthUserPhoto = (state) => {
+    return state.auth.userPhoto;
 }

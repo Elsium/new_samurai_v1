@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom';
 import LoginButton from '../UI/LoginBtn/LoginBtn';
 import user from '../../assets/img/user.jpg';
 
-const Header = ({isAuth, userProfile, login, sendLogout}) => {
+const Header = ({isAuth, userPhoto, login, sendLogout}) => {
     return (
         <header className={style.header}>
             <div className={style.logo}>
@@ -18,7 +18,7 @@ const Header = ({isAuth, userProfile, login, sendLogout}) => {
                     ? <div>
                         <NavLink to={`/profile`}>
                             <img
-                                src={userProfile ?userProfile.photos.small : user}
+                                src={userPhoto || user}
                                 alt=''/>
                             <p>{login}</p>
                         </NavLink>

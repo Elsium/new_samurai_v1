@@ -80,6 +80,11 @@
         background: rgb(180, 128, 255);
         color: white;
       }
+
+      &:active {
+        background: rgb(156, 85, 255);
+        color: white;
+      }
     }
   }
 }
