@@ -1,5 +1,6 @@
 import {profileAPI} from '../api/api';
 import {_setMyPhoto} from "./authReducer";
+import {stopSubmit} from "redux-form";
 
 const CREATE_POST = 'samurai/profile/CREATE_POST'
 const SET_USER_PROFILE = 'samurai/profile/SET_USER_PROFILE'
@@ -109,7 +110,11 @@ export const savePhoto = (photo) => async (dispatch) => {
 
 export const saveProfile = (profile) => async (dispatch, getState) => {
     const response = await profileAPI.saveProfile(profile);
-    !response.data.resultCode && dispatch(requestProfile(getState().auth.id));
+    if(!response.data.resultCode) dispatch(requestProfile(getState().auth.id));
+    else {
+        dispatch(stopSubmit('profileEdit', {_error: response.data.messages[0]}));
+        return Promise.reject(response.data.messages[0]);
+    }
 }
 
 export default profileReducer;

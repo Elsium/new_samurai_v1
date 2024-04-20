@@ -5,7 +5,7 @@ import ContactFormItem from "./ContactFormItem/ContactItem";
 
 const ProfileInfoForm = ({handleSubmit, contacts, error}) => {
     return (
-        <form onSubmit={handleSubmit} className={style.wrapper}>
+        <form onSubmit={handleSubmit} className={style.wrapper + ' ' + (error && style.serverError)}>
             <div className={style.aboutMe}>
                 <label>
                     <p>My Name</p>
@@ -27,6 +27,7 @@ const ProfileInfoForm = ({handleSubmit, contacts, error}) => {
                 <label>
                     <p>lookingForAJobDescription: <Field component={'textarea'} validate={[]} placeholder={'Your skills...'} name={'lookingForAJobDescription'}/></p>
                 </label>
+                <p className={style.errorItem}>{error}</p>
             </div>
             <div className={style.line}/>
             <div className={style.social}>{Object.keys(contacts).map(key => <ContactFormItem key={key} contactTitle={key} contactLink={contacts[key]}/>)}</div>

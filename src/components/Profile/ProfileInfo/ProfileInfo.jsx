@@ -15,7 +15,12 @@ const ProfileInfo = ({profile: {aboutMe, contacts, lookingForAJob, lookingForAJo
                 {lookingForAJob && <p>lookingForAJobDescription: <span>{lookingForAJobDescription}</span></p>}
             </div>
             <div className={style.line}/>
-            <div className={style.social}>{Object.keys(contacts).map(key => <ContactItem key={key} contactTitle={key} contactLink={contacts[key]}/>)}</div>
+            <div className={style.social}>
+                {Object.keys(contacts)
+                    .map(key => contacts[key]
+                        ? <ContactItem key={key} contactTitle={key} contactLink={contacts[key]}/>
+                        : '')}
+            </div>
         </section>
     );
 }

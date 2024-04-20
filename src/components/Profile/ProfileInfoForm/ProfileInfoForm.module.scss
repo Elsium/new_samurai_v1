@@ -39,6 +39,25 @@
   }
 }
 
+.errorItem {
+  display: none;
+  align-self: center;
+  margin-top: 10px;
+  color: red;
+}
+
+.serverError {
+  input {
+    border: 1px solid red;
+  }
+  textarea {
+    border: 1px solid red;
+  }
+  .errorItem {
+    display: block;
+  }
+}
+
 .aboutMe {
   display: flex;
   justify-content: flex-start;
@@ -70,6 +89,9 @@
 .job {
   padding: 0 40px;
   flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
   p {
     font-weight: 700;
     font-size: 16px;
@@ -96,3 +118,4 @@
   grid-template-rows: 1fr 1fr;
   grid-gap: 10px;
 }
+

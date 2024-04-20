@@ -8,8 +8,8 @@ const Profile = ({profile, userID, status, sendUpdateStatus, isOwner, savePhoto,
     const [editMode, setEditMode] = useState(false);
 
     const onSubmit = (formData) => {
-        saveProfile(formData);
-        setEditMode(false);
+        saveProfile(formData)
+            .then(() => setEditMode(false));
     }
 
     return (
