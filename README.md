@@ -1,4 +1,5 @@
 # Start to codding by course React-Samurai
+## Season 1
 
 1. **13.03.2024** - start project.
 2. **13.03.2024** - reached the 5th lesson
@@ -23,4 +24,8 @@
 21. **16.04.2024** - reached the 80th lesson
 22. **17.04.2024** - reached the 87th lesson
 23. **18.04.2024** - reached the 94th lesson
-24. **19.04.2024** - reached the 
+24. **19.04.2024** - reached the 97th lesson
+24. **20.04.2024** - reached the 99th lesson
+
+## Season 2
+1. **?** - continue project

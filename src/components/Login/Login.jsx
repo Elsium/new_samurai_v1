@@ -7,10 +7,11 @@ import {connect} from "react-redux";
 import {sendLogin} from "../../redux/authReducer";
 import {Navigate} from "react-router-dom";
 import {getAuth, getcaptchaURL} from "../../redux/authSelectors";
+import classNames from "classnames";
 
 const LoginForm = ({handleSubmit, error, captchaURL}) => {
     return (
-        <form onSubmit={handleSubmit} className={style.form + ' ' + (error && style.serverError)}>
+        <form onSubmit={handleSubmit} className={classNames(style.form, {[style.serverError]: error})}>
             <div className={style.input}>
                 <Field component={FormInput} validate={[required]} placeholder={'Email'} name={'email'}
                        autoComplete={'username'}/>

@@ -1,5 +1,5 @@
 import React, {lazy, Suspense} from 'react';
-import {Routes, Route, BrowserRouter} from 'react-router-dom';
+import {Routes, Route, BrowserRouter, Navigate} from 'react-router-dom';
 import {compose} from "redux";
 import {connect, Provider} from "react-redux";
 import {initializeApp} from "./redux/appReducer";
@@ -8,6 +8,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import Nav from './components/Nav/Nav';
 import Loader from "./components/UI/Loader/Loader";
 import store from "./redux/reduxStore";
+import NotFound from "./components/NotFound/NotFound";
 
 const DialogsContainer = lazy(() => import('./components/Dialogs/DialogsContainer'))
 const UsersContainer = lazy(() => import('./components/Users/UsersContainer'))
@@ -30,6 +31,7 @@ class App extends React.Component {
                 <main className={style.main}>
                     <Suspense fallback={<Loader/>}>
                         <Routes>
+                            <Route path={`/`} element={<Navigate to={`/profile`} />}/>
                             <Route path={`/profile`} element={<ProfileContainer/>}>
                                 <Route path={`:userID?`} element={<ProfileContainer/>}/>
                             </Route>
@@ -38,6 +40,7 @@ class App extends React.Component {
                             <Route path={`/music`} element={<Music/>}/>
                             <Route path={`/users`} element={<UsersContainer/>}/>
                             <Route path={`/login`} element={<Login/>}/>
+                            <Route path={`/*`} element={<NotFound/>}/>
                         </Routes>
                     </Suspense>
                 </main>

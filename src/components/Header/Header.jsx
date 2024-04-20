@@ -4,6 +4,7 @@ import style from './Header.module.scss';
 import {NavLink} from 'react-router-dom';
 import LoginButton from '../UI/LoginBtn/LoginBtn';
 import user from '../../assets/img/user.jpg';
+import classNames from "classnames";
 
 const Header = ({isAuth, userPhoto, login, sendLogout}) => {
     return (
@@ -13,7 +14,7 @@ const Header = ({isAuth, userPhoto, login, sendLogout}) => {
                     <img src={logo} alt='logo'/>
                 </NavLink>
             </div>
-            <div className={style.profile + ' ' + (isAuth && style.active)}>
+            <div className={classNames(style.profile, {[style.active]: isAuth})}>
                 {isAuth
                     ? <div>
                         <NavLink to={`/profile`}>

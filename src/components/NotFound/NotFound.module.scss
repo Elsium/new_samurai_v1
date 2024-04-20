@@ -1,0 +1,26 @@
+.wrapper {
+  margin: 100px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .four {
+    font-size: 60px;
+    font-weight: 700;
+  }
+  div {
+    border-left: 1px solid #bebebe;
+    height: 100px;
+    margin: 0 40px;
+  }
+  .text {
+    font-size: 30px;
+
+    a {
+      font-size: 16px;
+      color: rgb(223, 73, 255);
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}

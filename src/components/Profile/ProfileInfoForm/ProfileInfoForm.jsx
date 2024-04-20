@@ -2,10 +2,11 @@ import React from 'react';
 import style from './ProfileInfoForm.module.scss'
 import {Field, reduxForm} from "redux-form";
 import ContactFormItem from "./ContactFormItem/ContactItem";
+import classNames from "classnames";
 
 const ProfileInfoForm = ({handleSubmit, contacts, error}) => {
     return (
-        <form onSubmit={handleSubmit} className={style.wrapper + ' ' + (error && style.serverError)}>
+        <form onSubmit={handleSubmit} className={classNames(style.wrapper,{[style.serverError]: error})}>
             <div className={style.aboutMe}>
                 <label>
                     <p>My Name</p>
