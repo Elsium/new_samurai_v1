@@ -25,7 +25,8 @@
 22. **17.04.2024** - reached the 87th lesson
 23. **18.04.2024** - reached the 94th lesson
 24. **19.04.2024** - reached the 97th lesson
-24. **20.04.2024** - reached the 99th lesson
+25. **20.04.2024** - reached the 99th lesson
 
 ## Season 2
-1. **?** - continue project
+1. **20.04.2024** - continue project
+2. **20.04.2024** - reached the 1st lesson
