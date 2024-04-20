@@ -116,3 +116,25 @@
     display: block;
   }
 }
+
+.captcha {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  img {
+    width: 200px;
+  }
+
+  input {
+    padding: 10px 5px;
+    width: 80%;
+    height: 30px;
+    border-radius: 10px;
+    background: rgb(245, 245, 245);
+
+    &:focus {
+      border: 1px solid #656565;
+    }
+  }
+}
