@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../img/logo.png';
+import logo from '../../assets/img/logo.png';
 import style from './Header.module.scss';
 import {NavLink} from 'react-router-dom';
 import LoginButton from '../UI/LoginBtn/LoginBtn';
