@@ -30,3 +30,4 @@
 ## Season 2
 1. **20.04.2024** - continue project
 2. **20.04.2024** - reached the 1st lesson
+3. **21.04.2024** - reached the 2nd lesson
