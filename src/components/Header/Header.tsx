@@ -6,7 +6,14 @@ import LoginButton from '../UI/LoginBtn/LoginBtn';
 import user from '../../assets/img/user.jpg';
 import classNames from "classnames";
 
-const Header = ({isAuth, userPhoto, login, sendLogout}) => {
+type PropsType = {
+    isAuth: boolean,
+    login: string | null,
+    userPhoto: string | null,
+    sendLogout: () => void
+}
+
+const Header = ({isAuth, userPhoto, login, sendLogout}: PropsType) => {
     return (
         <header className={style.header}>
             <div className={style.logo}>
