@@ -2,12 +2,12 @@ import React from 'react';
 import style from './ProfileInfo.module.scss'
 import ContactItem from "./ContactItem/ContactItem";
 
-const ProfileInfo = ({profile: {aboutMe, contacts, lookingForAJob, lookingForAJobDescription}}) => {
+const ProfileInfo = ({profile: {contacts, lookingForAJob, lookingForAJobDescription}}) => {
     return (
         <section className={style.wrapper}>
             <div className={style.aboutMe}>
                 <p>About me</p>
-                <p>{aboutMe}</p>
+                {/*<p>{aboutMe}</p>*/}
             </div>
             <div className={style.line}/>
             <div className={style.job}>

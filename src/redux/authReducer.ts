@@ -5,7 +5,16 @@ const SET_USER_DATA = 'samurai/auth/SET_USER_DATA'
 const SET_MY_PHOTO = 'samurai/auth/SET_MY_PHOTO'
 const SET_CAPTCHA = 'samurai/auth/SET_CAPTCHA'
 
-let initialState = {
+type InitialStateType = {
+    id: number | null,
+    login: string | null,
+    email: string | null,
+    isAuth: boolean,
+    userPhoto: string | null,
+    captchaURL: string | null,
+}
+
+let initialState: InitialStateType = {
     id: null,
     login: null,
     email: null,
@@ -14,25 +23,47 @@ let initialState = {
     captchaURL: null,
 }
 
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case SET_USER_DATA:
         case SET_MY_PHOTO:
         case SET_CAPTCHA:
             return {
                 ...state,
-                ...action.payload
+                ...action.payload,
             }
         default:
             return state;
     }
 }
 
-const _setUserAuthSuccess = (id, login, email, isAuth) => ({type: SET_USER_DATA, payload: {id, login, email, isAuth}})
-export const _setMyPhoto = (userPhoto) => ({type: SET_MY_PHOTO, payload: {userPhoto}})
-export const _getCaptchaURLSuccess = (captchaURL) => ({type: SET_CAPTCHA, payload: {captchaURL}})
+type SetUserAuthSuccessActionPayloadType = {
+    id: number | null,
+    login: string | null,
+    email: string | null,
+    isAuth: boolean | null
+}
 
-export const requestUserAuth = () => async (dispatch) => {
+type SetUserAuthSuccessActionType = {
+    type: typeof SET_USER_DATA,
+    payload: SetUserAuthSuccessActionPayloadType,
+}
+
+type SetMyPhotoActionType = {
+    type: typeof SET_MY_PHOTO,
+    payload: {userPhoto: string | null}
+}
+
+type GetCaptchaURLSuccessActionType = {
+    type: typeof SET_CAPTCHA,
+    payload: {captchaURL: string}
+}
+
+const _setUserAuthSuccess = (id: number | null, login: string | null, email: string | null, isAuth: boolean | null):SetUserAuthSuccessActionType => ({type: SET_USER_DATA, payload: {id, login, email, isAuth}})
+export const _setMyPhoto = (userPhoto: string | null): SetMyPhotoActionType => ({type: SET_MY_PHOTO, payload: {userPhoto}})
+export const _getCaptchaURLSuccess = (captchaURL: string):GetCaptchaURLSuccessActionType => ({type: SET_CAPTCHA, payload: {captchaURL}})
+
+export const requestUserAuth = () => async (dispatch: any) => {
     const response = await authAPI.authMe();
     if (response.data.resultCode === 0) {
         const {id, login, email} = response.data.data;
@@ -41,7 +72,7 @@ export const requestUserAuth = () => async (dispatch) => {
         dispatch(_setUserAuthSuccess(id, login, email, true));
     }
 }
-export const sendLogin = (email, password, rememberMe, captcha) => async (dispatch) => {
+export const sendLogin = (email: string, password: string, rememberMe: boolean, captcha: any) => async (dispatch: any) => {
     const response = await authAPI.login(email, password, rememberMe, captcha)
     if (response.data.resultCode === 0) dispatch(requestUserAuth());
     else {
@@ -51,7 +82,7 @@ export const sendLogin = (email, password, rememberMe, captcha) => async (dispat
         dispatch(stopSubmit('login', {_error: response.data.messages[0]}))
     }
 }
-export const sendLogout = () => async (dispatch) => {
+export const sendLogout = () => async (dispatch: any) => {
     const response = await authAPI.logout();
     if (response.data.resultCode === 0) {
         dispatch(_setUserAuthSuccess(null, null, null, false));
@@ -59,7 +90,7 @@ export const sendLogout = () => async (dispatch) => {
     }
 }
 
-export const getCaptchaURL = () => async (dispatch) => {
+export const getCaptchaURL = () => async (dispatch: any) => {
     const response = await securityAPI.getCaptchaURL();
     const captchaURL = response.data.url;
     dispatch(_getCaptchaURLSuccess(captchaURL));

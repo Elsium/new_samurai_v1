@@ -2,11 +2,15 @@ import {requestUserAuth} from "./authReducer";
 
 const INITIALIZE_SUCCESS = 'samurai/app/INITIALIZE_SUCCESS'
 
-let initialState = {
+export type InitialStateType = {
+    initialize: boolean,
+}
+
+const initialState: InitialStateType = {
     initialize: false,
 }
 
-const appReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case INITIALIZE_SUCCESS :
             return {
@@ -18,9 +22,13 @@ const appReducer = (state = initialState, action) => {
     }
 }
 
-const _initializeSuccess = () => ({type: INITIALIZE_SUCCESS})
+type InitializeSuccessActionType = {
+    type: typeof INITIALIZE_SUCCESS,
+}
 
-export const initializeApp = () => async (dispatch) => {
+const _initializeSuccess = (): InitializeSuccessActionType => ({type: INITIALIZE_SUCCESS})
+
+export const initializeApp = () => async (dispatch: any) => {
     await Promise.all([dispatch(requestUserAuth())]);
     dispatch(_initializeSuccess());
 }

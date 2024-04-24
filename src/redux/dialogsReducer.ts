@@ -1,5 +1,18 @@
 const SEND_MSG = 'samurai/dialogs/SEND_MSG'
 
+type DialogType = {
+    userID: number,
+    name: string
+}
+
+type MessageType = {
+    userID: number,
+    msgID: number,
+    text: string,
+    time: string,
+    from: 1 | 0,
+}
+
 let initialState = {
     msg: [
         {userID: 2, msgID: 8, text: 'ok', time: '12:34', from: 1},
@@ -10,15 +23,17 @@ let initialState = {
         {userID: 2, msgID: 3, text: 'Ok', time: '12:14', from: 1},
         {userID: 1, msgID: 2, text: 'Hi', time: '12:14', from: 0},
         {userID: 2, msgID: 1, text: 'Hi', time: '12:12', from: 1},
-    ],
+    ] as Array<MessageType>,
     dialogs: [
         {userID: 2, name: 'Ivan Dog'},
         {userID: 3, name: 'Lisa Cat'},
         {userID: 4, name: 'Marina El'}
-    ]
+    ] as Array<DialogType>
 }
 
-const dialogsReducer = (state = initialState, action) => {
+type InitialStateType = typeof initialState;
+
+const dialogsReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case SEND_MSG:
             if (action.msg === "") return state
@@ -26,7 +41,7 @@ const dialogsReducer = (state = initialState, action) => {
             const time = new Date();
             let tempTime = ("0" + time.getHours()).slice(-2) + ":" + ("0" + time.getMinutes()).slice(-2);
 
-            let newMsg = {
+            let newMsg: MessageType = {
                 userID: 4,
                 msgID: state.msg.length + 1,
                 text: action.msg,
@@ -42,6 +57,12 @@ const dialogsReducer = (state = initialState, action) => {
             return state;
     }
 }
-export const sendMsg = (msg) => ({type: SEND_MSG, msg})
+
+type SendMsgActionType = {
+    type: typeof SEND_MSG,
+    msg: string,
+}
+
+export const sendMsg = (msg: string): SendMsgActionType => ({type: SEND_MSG, msg})
 
 export default dialogsReducer;

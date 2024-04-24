@@ -1,5 +1,5 @@
 import React, {lazy, Suspense} from 'react';
-import {Routes, Route, BrowserRouter, Navigate} from 'react-router-dom';
+import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import {compose} from "redux";
 import {connect, Provider} from "react-redux";
 import {initializeApp} from "./redux/appReducer";
@@ -7,7 +7,7 @@ import style from './App.module.scss';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Nav from './components/Nav/Nav';
 import Loader from "./components/UI/Loader/Loader";
-import store from "./redux/reduxStore";
+import store, {StateType} from "./redux/reduxStore";
 import NotFound from "./components/NotFound/NotFound";
 
 const DialogsContainer = lazy(() => import('./components/Dialogs/DialogsContainer'))
@@ -17,7 +17,16 @@ const Login = lazy(() => import('./components/Login/Login'))
 const News = lazy(() => import('./components/News/News'))
 const Music = lazy(() => import('./components/Music/Music'))
 
-class App extends React.Component {
+type MapStatePropsType = {
+    initialize: boolean,
+}
+
+type MapDispatchPropsType = {
+    initializeApp: () => void,
+}
+
+type PropsType = MapStatePropsType & MapDispatchPropsType
+class App extends React.Component<PropsType> {
     componentDidMount() {
         this.props.initializeApp();
     }
@@ -49,15 +58,15 @@ class App extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: StateType): MapStatePropsType => ({
     initialize: state.app.initialize,
 })
 
 const AppContainer = compose(
-    connect(mapStateToProps, {initializeApp})
+    connect<MapStatePropsType, MapDispatchPropsType>(mapStateToProps, {initializeApp})
 )(App)
 
-const SamuraiApp = (props) => {
+const SamuraiApp = () => {
     return (
         <BrowserRouter>
             <Provider store={store}>

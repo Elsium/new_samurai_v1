@@ -3,8 +3,22 @@ import {Pagination} from '@mui/material';
 import Loader from '../UI/Loader/Loader';
 import style from './Users.module.scss'
 import User from "./User/User";
+import {UserType} from "../../types/types";
 
-const Users = ({totalUsersCount, pageSize, currentPage, onChangePage, isFetching, users, ...props}) => {
+type PropsType = {
+    totalUsersCount: number,
+    pageSize: number,
+    currentPage: number,
+    onChangePage: (page: number) => void,
+    isFetching: boolean,
+    users: Array<UserType>,
+    isFollowing: Array<number>,
+    sendUnfollow: (id: number) => void,
+    sendFollow: (id: number) => void,
+    isAuth: boolean
+}
+
+const Users: React.FC<PropsType> = ({totalUsersCount, pageSize, currentPage, onChangePage, isFetching, users, ...props}) => {
     const pageCount = Math.ceil(totalUsersCount / pageSize);
     return (
         <section className={style.container}>

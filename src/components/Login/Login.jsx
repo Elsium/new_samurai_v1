@@ -6,7 +6,7 @@ import {required} from "../utils/validators/validators";
 import {connect} from "react-redux";
 import {sendLogin} from "../../redux/authReducer";
 import {Navigate} from "react-router-dom";
-import {getAuth, getcaptchaURL} from "../../redux/authSelectors";
+import {getAuth, getCaptchaURL} from "../../redux/authSelectors";
 import classNames from "classnames";
 
 const LoginForm = ({handleSubmit, error, captchaURL}) => {
@@ -53,9 +53,7 @@ const Login = ({sendLogin, isAuth, captchaURL}) => {
             <LoginReduxForm onSubmit={onSubmit} captchaURL={captchaURL}/>
             <div className={style.info}>
                 <h2>Info</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda consectetur facilis
-                    laboriosam modi vel velit voluptates voluptatum. At dicta excepturi inventore reiciendis sint.
-                    Consequuntur delectus esse iste itaque sequi?</p>
+                <p>Lorem ipsum dolor sit amet</p>
             </div>
         </div>
     );
@@ -63,7 +61,7 @@ const Login = ({sendLogin, isAuth, captchaURL}) => {
 
 const mapStateToProps = (state) => ({
     isAuth: getAuth(state),
-    captchaURL: getcaptchaURL(state),
+    captchaURL: getCaptchaURL(state),
 })
 
 export default connect(mapStateToProps, {sendLogin})(Login);

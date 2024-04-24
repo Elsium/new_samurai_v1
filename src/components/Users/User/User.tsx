@@ -2,8 +2,17 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import style from './User.module.scss'
 import userICO from '../../../assets/img/user.jpg'
+import {UserType} from "../../../types/types";
 
-const User = ({user, isFollowing, sendUnfollow, sendFollow, isAuth}) => {
+type PropsType = {
+    user: UserType,
+    isFollowing: Array<number>,
+    sendUnfollow: (id: number) => void,
+    sendFollow: (id: number) => void,
+    isAuth: boolean
+}
+
+const User: React.FC<PropsType> = ({user, isFollowing, sendUnfollow, sendFollow, isAuth}) => {
     return (
         <div className={style.user}>
             <div className={style.first}>
