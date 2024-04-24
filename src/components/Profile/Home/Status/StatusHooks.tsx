@@ -1,7 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import style from './Status.module.scss'
 
-const StatusHooks = (props) => {
+type PropsType = {
+    status: string,
+    canStatusChange: boolean,
+    sendUpdateStatus: (status: string) => void
+}
+
+const StatusHooks = (props: PropsType) => {
     const [editMode, setEditMode] = useState(false);
     const [status, setStatus] = useState(props.status);
 
@@ -19,7 +25,7 @@ const StatusHooks = (props) => {
         props.sendUpdateStatus(status);
     }
 
-    const onUpdateStatus = (e) => {
+    const onUpdateStatus = (e: React.FormEvent<HTMLInputElement>) => {
         setStatus(e.currentTarget.value);
     }
 

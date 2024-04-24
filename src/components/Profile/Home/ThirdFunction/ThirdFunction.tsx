@@ -1,7 +1,15 @@
 import React from 'react';
 import style from './ThirdFunction.module.scss'
+import {ProfileType} from "../../../../types/types";
 
-const ThirdFunction = ({profile, userID, toggleEditMode,editMode}) => {
+type PropsType = {
+    profile: ProfileType,
+    userID: number,
+    toggleEditMode: () => void,
+    editMode: boolean
+}
+
+const ThirdFunction = ({profile, userID, toggleEditMode,editMode}: PropsType) => {
     return (
         <div className={style.add}>
             {userID === profile.userId

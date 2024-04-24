@@ -2,10 +2,18 @@ import React from 'react';
 import style from './ProfilePhoto.module.scss'
 import user from '../../../../assets/img/user.jpg'
 import edit from '../../../../assets/img/edit.png'
+import {ProfileType} from "../../../../types/types";
 
-const ProfilePhoto = ({profile, isOwner, savePhoto}) => {
-    const onMainPhotoSelected = (e) => {
-        if (e.target.files.length) savePhoto(e.target.files[0])
+type PropsType = {
+    profile: ProfileType,
+    isOwner: boolean,
+    savePhoto: (file: any) => void
+}
+
+const ProfilePhoto = ({profile, isOwner, savePhoto}: PropsType) => {
+    const onMainPhotoSelected = (e: React.FormEvent<HTMLInputElement>) => {
+        const input = e.target as HTMLInputElement;
+        if (input.files && input.files.length) savePhoto(input.files[0])
     }
 
     return (

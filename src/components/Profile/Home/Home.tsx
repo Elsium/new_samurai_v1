@@ -3,8 +3,21 @@ import style from './Home.module.scss'
 import StatusHooks from "./Status/StatusHooks";
 import ProfilePhoto from "./ProfilePhoto/ProfilePhoto";
 import ThirdFunction from "./ThirdFunction/ThirdFunction";
+import {ProfileType} from "../../../types/types";
 
-const Home = ({profile, userID, isOwner, savePhoto, canStatusChange, status, sendUpdateStatus, toggleEditMode, editMode}) => {
+type PropsType = {
+    profile: ProfileType,
+    userID: number,
+    isOwner: boolean,
+    savePhoto: (file: any) => void,
+    canStatusChange: boolean,
+    status: string,
+    sendUpdateStatus: (status: string) => void,
+    toggleEditMode: () => void,
+    editMode: boolean
+}
+
+const Home = ({profile, userID, isOwner, savePhoto, canStatusChange, status, sendUpdateStatus, toggleEditMode, editMode}: PropsType) => {
     return (
         <section>
             <div className={style.banner}></div>

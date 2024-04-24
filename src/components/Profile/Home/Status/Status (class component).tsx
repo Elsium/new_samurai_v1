@@ -1,7 +1,18 @@
 import React from 'react';
 import style from './Status.module.scss'
 
-class Status extends React.Component {
+type PropsType = {
+    status: string,
+    canStatusChange: boolean,
+    sendUpdateStatus: (status: string) => void,
+}
+
+type StateType = {
+    editMode: boolean,
+    status: string
+}
+
+class Status extends React.Component<PropsType, StateType> {
     state = {
         editMode: false,
         status: this.props.status,
@@ -21,12 +32,12 @@ class Status extends React.Component {
         this.props.sendUpdateStatus(this.state.status);
     }
 
-    onUpdateStatus = (e) => {
+    onUpdateStatus = (e: React.FormEvent<HTMLInputElement>) => {
         this.setState({
             status: e.currentTarget.value,
         })
     }
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps: PropsType, prevState: StateType) {
         if(prevProps.status !== this.props.status) {
             this.setState({
                 status: this.props.status,

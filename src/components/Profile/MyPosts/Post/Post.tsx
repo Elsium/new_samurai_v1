@@ -3,7 +3,16 @@ import style from './Post.module.scss'
 import comment from './img/comment.png'
 import like from './img/like.png'
 
-const Post = (props) => {
+type PropsType = {
+    name: string,
+    date: string,
+    time: string,
+    text: string,
+    commentsCount: number,
+    likesCount: number
+}
+
+const Post = (props: PropsType) => {
     return (
         <div className={style.item}>
             <div className={style.header}>
