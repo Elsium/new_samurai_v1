@@ -1,7 +1,9 @@
 import {profileAPI} from '../api/api';
-import {_setMyPhoto} from "./authReducer";
+import {_setMyPhoto, SetMyPhotoActionType} from "./authReducer";
 import {stopSubmit} from "redux-form";
 import {PhotosType, PostType, ProfileType} from "../types/types";
+import {ThunkAction} from "redux-thunk";
+import {StateType} from "./reduxStore";
 
 const CREATE_POST = 'samurai/profile/CREATE_POST'
 const SET_USER_PROFILE = 'samurai/profile/SET_USER_PROFILE'
@@ -36,7 +38,7 @@ let initialState = {
 
 type InitialStateType = typeof initialState
 
-const profileReducer = (state = initialState, action: any): InitialStateType => {
+const profileReducer = (state = initialState, action: ActionTypes): InitialStateType => {
     switch (action.type) {
         case CREATE_POST:
             if (action.post === '') return state
@@ -88,26 +90,25 @@ type CreatePostActionType = {
     type: typeof CREATE_POST,
     post: string
 }
-
 type DeletePostActionType = {
     type: typeof DELETE_POST,
     postId: number
 }
-
 type SetUserProfileActionType = {
     type: typeof SET_USER_PROFILE,
     profile: ProfileType
 }
-
 type SetUserStatusActionType = {
     type: typeof SET_STATUS,
     status: string
 }
-
 type SavePhotoSuccessActionType = {
     type: typeof SET_PHOTO,
     photos: PhotosType
 }
+
+type ActionTypes = CreatePostActionType | DeletePostActionType |
+    SetUserProfileActionType | SetUserStatusActionType | SavePhotoSuccessActionType
 
 export const createPost = (post: string): CreatePostActionType => ({type: CREATE_POST, post})
 export const deletePost = (postId: number): DeletePostActionType => ({type: DELETE_POST, postId})
@@ -115,35 +116,42 @@ const _setUserProfile = (profile: ProfileType): SetUserProfileActionType => ({ty
 const _setUserStatus = (status: string): SetUserStatusActionType => ({type: SET_STATUS, status})
 const _savePhotoSuccess = (photos: PhotosType): SavePhotoSuccessActionType => ({type: SET_PHOTO, photos})
 
-export const requestProfile = (id: number) => async (dispatch: any) => {
-    const response = await profileAPI.getProfile(id);
-    dispatch(_setUserProfile(response.data));
-}
-export const requestStatus = (id: number) => async (dispatch: any) => {
-    const response = await profileAPI.getStatus(id);
-    dispatch(_setUserStatus(response.data));
-}
-export const sendUpdateStatus = (status: string) => async (dispatch: any) => {
-    const response = await profileAPI.updateStatus(status);
-    !response.data.resultCode && dispatch(_setUserStatus(status));
-}
+type ThunkType = ThunkAction<Promise<void>, StateType, unknown, ActionTypes | SetMyPhotoActionType>;
 
-export const savePhoto = (file: any) => async (dispatch: any) => {
-    const response = await profileAPI.savePhoto(file);
-    if(!response.data.resultCode) {
-        dispatch(_savePhotoSuccess(response.data.data.photos));
-        dispatch(_setMyPhoto(response.data.data.photos.small));
+export const requestProfile = (id: number): ThunkType =>
+    async (dispatch)=> {
+        const response = await profileAPI.getProfile(id);
+        dispatch(_setUserProfile(response.data));
     }
-}
+export const requestStatus = (id: number): ThunkType =>
+    async (dispatch) => {
+        const response = await profileAPI.getStatus(id);
+        dispatch(_setUserStatus(response.data));
+    }
+export const sendUpdateStatus = (status: string): ThunkType =>
+    async (dispatch) => {
+        const response = await profileAPI.updateStatus(status);
+        !response.data.resultCode && dispatch(_setUserStatus(status));
+    }
 
-export const saveProfile = (profile: ProfileType) => async (dispatch: any, getState: any): Promise<void> => {
-    const response = await profileAPI.saveProfile(profile);
-    if(!response.data.resultCode) dispatch(requestProfile(getState().auth.id));
-    else {
-        dispatch(stopSubmit('profileEdit', {_error: response.data.messages[0]}));
-        return Promise.reject(response.data.messages[0]);
+export const savePhoto = (file: any): ThunkType =>
+    async (dispatch) => {
+        const response = await profileAPI.savePhoto(file);
+        if (!response.data.resultCode) {
+            dispatch(_savePhotoSuccess(response.data.data.photos));
+            dispatch(_setMyPhoto(response.data.data.photos.small));
+        }
     }
-    return Promise.resolve();
-}
+
+export const saveProfile = (profile: ProfileType) =>
+    async (dispatch: any, getState: any) => {
+        const response = await profileAPI.saveProfile(profile);
+        if (!response.data.resultCode) dispatch(requestProfile(getState().auth.id));
+        else {
+            dispatch(stopSubmit('profileEdit', {_error: response.data.messages[0]}));
+            return Promise.reject(response.data.messages[0]);
+        }
+        return Promise.resolve();
+    }
 
 export default profileReducer;
